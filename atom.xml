@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-02T14:38:03.981Z</updated>
+    <updated>2019-06-02T14:39:22.919Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -16,7 +16,11 @@
         <link href="https://jiaqiwang98.github.io/post/hello-world">
         </link>
         <updated>2019-06-02T14:34:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>新开了博客，以后就在这里写点东西吧～</p>
+]]></summary>
         <content type="html"><![CDATA[<p>新开了博客，以后就在这里写点东西吧～</p>
+<!-- more -->
+<p>新开了博客，以后就在这里写点东西吧～</p>
 ]]></content>
     </entry>
 </feed>
