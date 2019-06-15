@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello, World! | Jiaqi`s Blog</title>
+<title>刷题笔记 Codeup100000597:Set Similarity | Jiaqi`s Blog</title>
 <link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1560614959061">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -74,23 +74,87 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello, World!
+              刷题笔记 Codeup100000597:Set Similarity
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-06-02 ·
+                · 2019-06-16 ·
               </time>
+              
+                <a href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q" class="post-tag">
+                  # 刷题笔记
+                </a>
               
             </div>
             
             <div class="post-content">
-              <!-- more -->
-<p>新开了博客，以后就在这里写点东西吧～</p>
+              <p>##题目：
+本题为胡凡《算法笔记》STL章节的一道练习题。
+<a href="http://codeup.cn/problem.php?cid=100000597&amp;pid=0">http://codeup.cn/problem.php?cid=100000597&amp;pid=0</a>
+##题目大意：
+给定几个集合，求指定编号集合的相似率。</p>
+<p>相似率为：交集的元素个数/并集的元素个数*100%。
+##题解：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;set&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+int main(){
+    set&lt;int&gt; s[60];	
+    int n;
+    cin&gt;&gt;n;
+    int a,pos = 1,t;
+    while(n--){
+        cin&gt;&gt;a;
+        for (int i = 0; i &lt; a; ++i)
+        {
+            cin&gt;&gt;t;
+            s[pos].insert(t);
+        }
+        pos++;
+    }
+    int b,l,r;
+    double rate;
+    cin&gt;&gt;b;
+    while (b--){
+        cin&gt;&gt;l&gt;&gt;r;
+        int cnt = 0;
+        set&lt;int&gt;ss;
+        set&lt;int&gt;::iterator it;
+        for (it = s[l].begin(); it != s[l].end(); it++) {
+            ss.insert(*it);
+            if (s[r].find(*it) != s[r].end()){
+                cnt++;
+            }
+        }
+        for (it = s[r].begin(); it != s[r].end(); it++) {
+            ss.insert(*it);
+        }
+        rate = cnt * 1.0 / ss.size() * 100;
+        printf(&quot;%.1lf%%\n&quot;,rate);
+    }
+    return 0;
+}
+</code></pre>
+<p>##What I Learned（遇到的坑）
+1.<code>set&lt;int&gt; s[60]</code> 容器类器也可以定义为数组</p>
+<p>2.<code>find()</code>函数如果没有找到元素则返回<code>s.end()</code></p>
+<p>类型为迭代器而不是布尔值，,所以判断语句应该为<code>if (s[r].find(*it) != s[r].end())</code></p>
+<p>而不是<code>if (s[r].find(*it))</code></p>
 
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://jiaqiwang98.github.io/post/tour-to-top-university">
+              <h3 class="post-title">
+                Tour to Top University
+              </h3>
+            </a>
+          </div>
         
 
         
