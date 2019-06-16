@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-16T14:15:35.504Z</updated>
+    <updated>2019-06-16T14:33:18.136Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,85 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[刷题笔记Codeup1782:谁是你的潜在朋友]]></title>
+        <id>https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you</id>
+        <link href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you">
+        </link>
+        <updated>2019-06-16T14:31:31.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="题目">题目</h2>
+<p><a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=0">http://codeup.cn/problem.php?cid=100000582&amp;pid=0</a></p>
+<h2 id="题目大意">题目大意：</h2>
+<p>“臭味相投”——这是我们描述朋友时喜欢用的词汇。两个人是朋友通常意味着他们存在着许多共同的兴趣。然而作为一个宅男，你发现自己与他人相互了解的机会 并不太多。幸运的是，你意外得到了一份北大图书馆的图书借阅记录，于是你挑灯熬夜地编程，想从中发现潜在的朋友。</p>
+<p>首先你对借阅记录进行了一番整理，把N个读者依次编号为1,2,…,N，把M本书依次编号为1,2,…,M。同时，按照“臭味相投”的原则，和你喜欢读同一本书的人，就是你的潜在朋友。你现在的任务是从这份借阅记录中计算出每个人有几个潜在朋友。</p>
+<h2 id="题解">题解：</h2>
+<h4 id="答案错误50">“答案错误50%”</h4>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int hash[210] ;
+    memset(hash,0,sizeof(hash));
+    int reader[100100];
+    int n,m,t;
+    cin&gt;&gt;n&gt;&gt;m;
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        cin&gt;&gt;t;
+        reader[i] = t;
+        hash[t]++;
+    }
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        if (hash[reader[i]] - 1 ==0)
+        {
+            cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+        }else{
+            cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="ac">“AC”</h4>
+<pre><code class="language-C++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int n,m,t;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){//多点测试输入格式
+        int hash[210] ;
+        memset(hash,0,sizeof(hash));
+        int reader[100100];
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            cin&gt;&gt;t;
+            reader[i] = t;
+            hash[t]++;
+        }
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            if (hash[reader[i]] - 1 ==0)
+            {
+                cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+            }else{
+                cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+<h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
+<p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
+<p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[刷题笔记Codeup6126:Set Similarity]]></title>
         <id>https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity</id>

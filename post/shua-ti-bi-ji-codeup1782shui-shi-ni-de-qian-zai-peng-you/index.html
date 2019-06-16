@@ -1,0 +1,192 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>刷题笔记Codeup1782:谁是你的潜在朋友 | Jiaqi`s Blog</title>
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1560695594435">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://jiaqiwang98.github.io">
+  <img class="avatar" src="https://jiaqiwang98.github.io/images/avatar.png?v=1560695594435" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiaqi`s Blog
+  </h1>
+  <p class="site-description">
+    脑门渐秃终不悔，为码消得人憔悴
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              刷题笔记Codeup1782:谁是你的潜在朋友
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-06-16 ·
+              </time>
+              
+                <a href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q" class="post-tag">
+                  # 刷题笔记
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <h2 id="题目">题目</h2>
+<p><a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=0">http://codeup.cn/problem.php?cid=100000582&amp;pid=0</a></p>
+<h2 id="题目大意">题目大意：</h2>
+<p>“臭味相投”——这是我们描述朋友时喜欢用的词汇。两个人是朋友通常意味着他们存在着许多共同的兴趣。然而作为一个宅男，你发现自己与他人相互了解的机会 并不太多。幸运的是，你意外得到了一份北大图书馆的图书借阅记录，于是你挑灯熬夜地编程，想从中发现潜在的朋友。</p>
+<p>首先你对借阅记录进行了一番整理，把N个读者依次编号为1,2,…,N，把M本书依次编号为1,2,…,M。同时，按照“臭味相投”的原则，和你喜欢读同一本书的人，就是你的潜在朋友。你现在的任务是从这份借阅记录中计算出每个人有几个潜在朋友。</p>
+<h2 id="题解">题解：</h2>
+<h4 id="答案错误50">“答案错误50%”</h4>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int hash[210] ;
+    memset(hash,0,sizeof(hash));
+    int reader[100100];
+    int n,m,t;
+    cin&gt;&gt;n&gt;&gt;m;
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        cin&gt;&gt;t;
+        reader[i] = t;
+        hash[t]++;
+    }
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        if (hash[reader[i]] - 1 ==0)
+        {
+            cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+        }else{
+            cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="ac">“AC”</h4>
+<pre><code class="language-C++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int n,m,t;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){//多点测试输入格式
+        int hash[210] ;
+        memset(hash,0,sizeof(hash));
+        int reader[100100];
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            cin&gt;&gt;t;
+            reader[i] = t;
+            hash[t]++;
+        }
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            if (hash[reader[i]] - 1 ==0)
+            {
+                cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+            }else{
+                cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+<h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
+<p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
+<p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
+
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity">
+              <h3 class="post-title">
+                刷题笔记Codeup6126:Set Similarity
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://jiaqiwang98.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
