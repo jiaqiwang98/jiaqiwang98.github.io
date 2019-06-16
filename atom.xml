@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-16T14:08:23.221Z</updated>
+    <updated>2019-06-16T14:15:35.504Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[Codeup100000597:Set Similarity]]></title>
+        <title type="html"><![CDATA[刷题笔记Codeup6126:Set Similarity]]></title>
         <id>https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity</id>
         <link href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity">
         </link>
