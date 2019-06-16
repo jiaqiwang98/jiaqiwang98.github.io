@@ -3,8 +3,8 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>刷题笔记 Codeup100000597:Set Similarity | Jiaqi`s Blog</title>
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1560614959061">
+<title>Codeup100000597:Set Similarity | Jiaqi`s Blog</title>
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1560694101903">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://jiaqiwang98.github.io">
-  <img class="avatar" src="https://jiaqiwang98.github.io/images/avatar.png?v=1560614959061" alt="">
+  <img class="avatar" src="https://jiaqiwang98.github.io/images/avatar.png?v=1560694101903" alt="">
   </a>
   <h1 class="site-title">
     Jiaqi`s Blog
@@ -74,7 +74,7 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              刷题笔记 Codeup100000597:Set Similarity
+              Codeup100000597:Set Similarity
             </h2>
             <div class="post-info">
               <time class="post-time">
@@ -88,13 +88,13 @@
             </div>
             
             <div class="post-content">
-              <p>##题目：
-本题为胡凡《算法笔记》STL章节的一道练习题。
-<a href="http://codeup.cn/problem.php?cid=100000597&amp;pid=0">http://codeup.cn/problem.php?cid=100000597&amp;pid=0</a>
-##题目大意：
-给定几个集合，求指定编号集合的相似率。</p>
-<p>相似率为：交集的元素个数/并集的元素个数*100%。
-##题解：</p>
+              <h2 id="题目">题目：</h2>
+<p>本题为胡凡《算法笔记》STL章节的一道练习题。
+<a href="http://codeup.cn/problem.php?cid=100000597&amp;pid=0">http://codeup.cn/problem.php?cid=100000597&amp;pid=0</a></p>
+<h2 id="题目大意">题目大意：</h2>
+<p>给定几个集合，求指定编号集合的相似率。</p>
+<p>相似率为：交集的元素个数/并集的元素个数*100%。</p>
+<h2 id="题解">题解：</h2>
 <pre><code class="language-C++">#include &lt;iostream&gt;
 #include &lt;set&gt;
 #include &lt;iomanip&gt;
@@ -136,8 +136,8 @@ int main(){
     return 0;
 }
 </code></pre>
-<p>##What I Learned（遇到的坑）
-1.<code>set&lt;int&gt; s[60]</code> 容器类器也可以定义为数组</p>
+<h2 id="what-i-learned遇到的坑">What I Learned（遇到的坑）</h2>
+<p>1.<code>set&lt;int&gt; s[60]</code> 容器类器也可以定义为数组</p>
 <p>2.<code>find()</code>函数如果没有找到元素则返回<code>s.end()</code></p>
 <p>类型为迭代器而不是布尔值，,所以判断语句应该为<code>if (s[r].find(*it) != s[r].end())</code></p>
 <p>而不是<code>if (s[r].find(*it))</code></p>
