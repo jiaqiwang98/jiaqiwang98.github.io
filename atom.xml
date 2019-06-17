@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-16T14:33:18.136Z</updated>
+    <updated>2019-06-17T15:31:46.910Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -87,6 +87,37 @@ int main(int argc, char const *argv[])
 <h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
 <p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
 <p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
+<h4 id="还有一道类似的题codeup6112be-unique">还有一道类似的题Codeup6112：Be Unique</h4>
+<p>题目：
+<a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=2">http://codeup.cn/problem.php?cid=100000582&amp;pid=2</a>
+题解在此：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(){
+    int n;
+    while(scanf(&quot;%d&quot;,&amp;n) != EOF){
+        int num[100100] = {0};
+        int hash[100100] = {0};
+        for (int i = 0; i &lt; n; ++i) {
+            cin&gt;&gt;num[i];
+            hash[num[i]] ++;
+        }
+        int j;
+        for (j = 0; j &lt; n; ++j) {
+            if (hash[num[j]] == 1){
+                cout&lt;&lt;num[j]&lt;&lt;endl;
+                break;
+            }
+        }
+        if (j == n) {
+            cout &lt;&lt; &quot;None&quot; &lt;&lt; endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>该题需要注意的是<code>num[]</code>数组要开大些，否则会出现数据越界（<strong>RE</strong>）</p>
 ]]></content>
     </entry>
     <entry>
