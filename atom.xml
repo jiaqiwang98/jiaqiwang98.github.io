@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-19T13:26:11.834Z</updated>
+    <updated>2019-06-19T14:57:26.833Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,160 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[题解洛谷P3370:【模板】字符串哈希]]></title>
+        <id>https://jiaqiwang98.github.io/post/ti-jie-luo-gu-p3370mo-ban-zi-fu-chuan-ha-xi</id>
+        <link href="https://jiaqiwang98.github.io/post/ti-jie-luo-gu-p3370mo-ban-zi-fu-chuan-ha-xi">
+        </link>
+        <updated>2019-06-19T14:49:52.000Z</updated>
+        <content type="html"><![CDATA[<p>正题之前先看一下乞丐版的字符串Hash：</p>
+<p>问题：
+给出N个字符串（由恰好三位大写字母组成），再给出M个查询字符串，问每个查询字符串在N个字符串中出现的次数？</p>
+<p>思路就是将字符串每一位看成26进制数的每一位（因为题目只有大写，如果有小写的话就是<strong>52</strong>进制，以此类推，包含所有ASCII码的字符串就是<strong>127</strong>进制），然后进行换算得出唯一的Hash值</p>
+<h2 id="题解">题解</h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int hashFunc(char s[],int len){
+    int id = 0;
+    for (int i = 0; i &lt; len; ++i) {
+        id = id * 26 + (s[i] - 'A');
+    }
+    return id;
+}
+int main(){
+    int n,m;
+    cin&gt;&gt;n;
+    char s[10];
+    int hashTable[26 * 26 * 26 + 10];
+    memset(hashTable,0,sizeof(hashTable));
+    for (int i = 0; i &lt; n; ++i) {
+        scanf(&quot;%s&quot;,s);
+        hashTable[hashFunc(s,3)] ++;
+    }
+    cin&gt;&gt;m;
+    int t;
+    while(m--){
+        scanf(&quot;%s&quot;,s);
+        t = hashTable[hashFunc(s,3)];
+        cout&lt;&lt;t&lt;&lt;endl;
+    }
+    return 0;
+}
+
+</code></pre>
+<h2 id="正题题目">正题题目：</h2>
+<p><a href="https://www.luogu.org/problemnew/show/P3370">https://www.luogu.org/problemnew/show/P3370</a></p>
+<p>题如其名模版题，按规矩办事即可</p>
+<h3 id="90分代码">90分代码</h3>
+<p>第二个点一直没过，看了讨论区也没有解决....可能是卡了大素数</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#define b 131
+#define mod 19260817
+using namespace std;
+long long hashFunc(char s[],int len){
+    int id = 0;
+    for (int i = 0; i &lt; len; ++i) {
+        if (s[i] &gt; 'A' &amp;&amp; s[i] &lt; 'Z'){
+            id = (id * b + (s[i] - 'A')) % mod;
+        }else if(s[i] &gt; 'a' &amp;&amp; s[i] &lt; 'z'){
+            id = (id * b + (s[i] - 'a') + 26) % mod;
+        }else if (s[i] &gt; '0' &amp;&amp; s[i] &lt; '9'){
+            id = (id * b + (s[i] - '0') + 52) % mod;
+        }
+    }
+    return id;
+}
+int main(){
+    int n,cnt = 1;
+    char s[10500];
+    long long hashTable[10500] ;
+    memset(hashTable, false, sizeof(hashTable));
+    cin&gt;&gt;n;
+    getchar();
+    getchar();
+    for (int i = 0; i &lt; n ; ++i) {
+        scanf(&quot;%s&quot;,s);
+        hashTable[i] = hashFunc(s,strlen(s)) ;
+    }
+    sort(hashTable ,hashTable + n);
+    for (int j = 1; j &lt; n; ++j) {
+        if(hashTable[j] != hashTable[j - 1]){
+            cnt++;
+        }
+    }
+    cout&lt;&lt;cnt&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="ac">AC</h3>
+<p>思路：<code>unsigned long long</code>类型具有自动溢出取模功能，如果<code>unsigned long long</code>溢出会自动模2^64，这样就不需要我们寻找大素数取模了。（好吧我承认我也是看题解区才知道的...）</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+typedef unsigned long long ull;//宏定义
+#define b 131
+ull hashFunc(char s[], int len){
+    ull id = 0;
+    for (int i = 0; i &lt; len; ++i) {
+        id = id * b + (ull)s[i];
+    }
+    return id;
+}
+int main(){
+    char s[10500];
+    ull hashTable[10050];
+    memset(hashTable,0, sizeof(hashTable));
+    int n,cnt = 1;
+    cin&gt;&gt;n;
+    for (int i = 0; i &lt; n; ++i) {
+        scanf(&quot;%s&quot;,s);
+        hashTable[i] = hashFunc(s,strlen(s));
+    }
+    sort(hashTable,hashTable + n);
+    for (int j = 1; j &lt; n; ++j) {
+        if (hashTable[j] != hashTable[j - 1]){
+            cnt++;
+        }
+    }
+    cout&lt;&lt;cnt&lt;&lt;endl;
+    return 0;
+}
+
+</code></pre>
+<p>过了这道题，那下面这道题就是洒洒水啦</p>
+<h2 id="codeup6120string-subtraction">Codeup6120:String Subtraction</h2>
+<p>http://codeup.cn/problem.php?cid=100000582&amp;pid=3</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(){
+    int hashTable[130];
+    memset(hashTable, 0, sizeof(hashTable));
+    char a[10010],b[10010];
+    gets(a);
+    //cin.get(a, sizeof(a));
+    gets(b);
+    for (int i = 0; i &lt; strlen(b); ++i) {
+        hashTable[(int)b[i]] = 1;
+    }
+    for (int j = 0; j &lt; strlen(a); ++j) {
+        if (hashTable[(int)a[j]] == 0){
+            cout&lt;&lt;a[j];
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+<p>这道题的唯一一个坑点就是第二行输入也就是<code>b</code>串也是可能含空格的，所以不能用<code>scanf(&quot;%s&quot;,b)</code>也需要用<code>gets(b)</code>不然会WA。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解PAT1023:组个最小数]]></title>
         <id>https://jiaqiwang98.github.io/post/ti-jie-pat1023zu-ge-zui-xiao-shu</id>
