@@ -1,9 +1,9 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jiaqi`s Blog</title>
+<title>题解PAT1023:组个最小数 | Jiaqi`s Blog</title>
 <link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1560950761216">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -71,15 +71,72 @@
 </div>
 
 
-        <div class="tags-container">
-          
-            <a class="tag" href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q">刷题笔记</a>
-          
-            <a class="tag" href="https://jiaqiwang98.github.io/tag/2eDZaGjj3">学院路29号</a>
-          
-            <a class="tag" href="https://jiaqiwang98.github.io/tag/VjWdmPJlG">Daily</a>
-          
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              题解PAT1023:组个最小数
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-06-19 ·
+              </time>
+              
+                <a href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q" class="post-tag">
+                  # 刷题笔记
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <h2 id="题目">题目</h2>
+<p>https://pintia.cn/problem-sets/994805260223102976/problems/994805298269634560</p>
+<h2 id="我的思路">我的思路</h2>
+<p>没什么好说的，贪心基本题，0不能在第一位</p>
+<h2 id="题解">题解</h2>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+int main(){
+    int a[10];
+    for (int i = 0; i &lt; 10; ++i) {
+        cin&gt;&gt;a[i];
+    }
+    for (int k = 1; k &lt; 10; ++k) {
+        if (a[k] != 0){
+            cout&lt;&lt;k;
+            a[k] --;
+            break;
+        }
+    }
+    for (int j = 0; j &lt; 10; ) {
+        if (a[j] != 0){
+            cout&lt;&lt;j;
+            a[j] --;
+        }
+        if(a[j] == 0){
+            j++;
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
         </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you">
+              <h3 class="post-title">
+                题解Codeup1782:谁是你的潜在朋友
+              </h3>
+            </a>
+          </div>
+        
+
+        
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
