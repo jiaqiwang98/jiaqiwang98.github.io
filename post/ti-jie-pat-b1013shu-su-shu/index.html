@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>题解PAT B1023:组个最小数 | Jiaqi`s Blog</title>
+<title>题解PAT B1013:数素数 | Jiaqi`s Blog</title>
 <link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1561034419966">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -74,11 +74,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              题解PAT B1023:组个最小数
+              题解PAT B1013:数素数
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-06-19 ·
+                · 2019-06-20 ·
               </time>
               
                 <a href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q" class="post-tag">
@@ -88,38 +88,51 @@
             </div>
             
             <div class="post-content">
-              <h2 id="题目">题目</h2>
-<p>https://pintia.cn/problem-sets/994805260223102976/problems/994805298269634560</p>
-<h2 id="我的思路">我的思路</h2>
-<p>没什么好说的，贪心基本题，0不能在第一位</p>
-<h2 id="题解">题解</h2>
+              <h2 id="题目">题目：</h2>
+<p><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805309963354112">https://pintia.cn/problem-sets/994805260223102976/problems/994805309963354112</a></p>
+<h2 id="思路">思路:</h2>
+<p>素数筛法 + 打表：用筛法（筛法的详细讲解见胡凡《算法笔记》P162）求出范围内第1-第10^4个素数，根据要求输出。</p>
+<p>如何知道第10^4个素数大约是多少？需要先调整定义过的<code>maxn</code>的范围，输出<code>FindPrime()</code>的<code>cnt</code>值来获得。经测试<code>maxn==100000</code>筛出9593个素数，<code>maxn==150000</code>筛出13849个素数，所以<code>maxn</code>选择150000即可。</p>
+<h2 id="题解">题解:</h2>
 <pre><code class="language-C++">#include &lt;iostream&gt;
 using namespace std;
+const int maxn = 200500;        //要大于第10^4个素数的范围
+int prime[maxn] = {0};
+int cnt = 1;
+void FindPrime(){           //素数筛
+    bool a[maxn] = {false};
+    for (int i = 2; i &lt; maxn; ++i) {
+        if (a[i] == false){
+            for (int j = i + i ; j &lt; maxn ; j = j + i) {
+                a[j] = true;
+            }
+            prime[cnt] = i;
+            cnt++;
+        }
+    }
+}
 int main(){
-    int a[10];
-    for (int i = 0; i &lt; 10; ++i) {
-        cin&gt;&gt;a[i];
-    }
-    for (int k = 1; k &lt; 10; ++k) {
-        if (a[k] != 0){
-            cout&lt;&lt;k;
-            a[k] --;
-            break;
-        }
-    }
-    for (int j = 0; j &lt; 10; ) {
-        if (a[j] != 0){
-            cout&lt;&lt;j;
-            a[j] --;
-        }
-        if(a[j] == 0){
-            j++;
+    int ans = 1;
+    int s,d;
+    cin&gt;&gt;s&gt;&gt;d;
+    FindPrime();
+    for (int i = s; i &lt;= d; ++i,ans++) {
+        if (ans % 10 == 0){	//每10个数一换行+去掉空格
+            cout&lt;&lt;prime[i];
+            cout&lt;&lt;endl;
+        }else if(i != d ){
+            cout&lt;&lt;prime[i]&lt;&lt;&quot; &quot;;
+        }else if(i == d ){	//最后一个输出结果也不能有空格
+            cout&lt;&lt;prime[i];
         }
     }
     return 0;
 }
 
 </code></pre>
+<h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
+<p>1.<code>maxn</code>一开始开的太小了，有几个测试点WA了
+2.输出格式要注意，最后一个输出结果后面也不能带有空格，否则就会<strong>Presentation Error</strong></p>
 
             </div>
           </article>
@@ -128,9 +141,9 @@ int main(){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you">
+            <a href="https://jiaqiwang98.github.io/post/ti-jie-luo-gu-p3370mo-ban-zi-fu-chuan-ha-xi">
               <h3 class="post-title">
-                题解Codeup1782:谁是你的潜在朋友
+                题解洛谷P3370:【模板】字符串哈希
               </h3>
             </a>
           </div>
