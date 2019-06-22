@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-21T13:16:47.852Z</updated>
+    <updated>2019-06-22T12:09:11.939Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,52 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[题解Codeup6117:Student List for Course (25)]]></title>
+        <id>https://jiaqiwang98.github.io/post/ti-jie-codeup6117student-list-for-course-25</id>
+        <link href="https://jiaqiwang98.github.io/post/ti-jie-codeup6117student-list-for-course-25">
+        </link>
+        <updated>2019-06-22T12:07:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="题目">题目</h2>
+<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a>
+这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
+<h2 id="思路">思路：</h2>
+<p>建立一个<code>vector&lt;string&gt;</code>型的数组<code>v[course]</code>，<code>course</code>是这门课的编号，数组里装选这门课的所有学生名字。然后根据题目要求输出课编号，选课人数即为<code>v[i].size()</code>，遍历输出每个名字。</p>
+<p>坑点：<strong><code>Then output the students' names in alphabetical order.</code></strong>  输出的名字按字典序排列。没注意到这个你就会WA。</p>
+<h2 id="题解">题解：</h2>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+const int maxn = 2550;
+using namespace std;
+int main(){
+    int n,k;
+    cin&gt;&gt;n&gt;&gt;k;
+    string name;
+    vector&lt;string&gt; v[maxn];
+    while(n--){
+        int c,course;
+        cin&gt;&gt;name;
+        cin&gt;&gt;c;
+        for (int i = 1; i &lt;= c; ++i) {
+            cin&gt;&gt;course;
+            v[course].push_back(name);
+        }
+    }
+    for (int j = 1; j &lt;= k; ++j) {
+        cout&lt;&lt;j&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;v[j].size()&lt;&lt;endl;
+        sort(v[j].begin(),v[j].end());     //字典序排列容器中的名字字符串
+        for (vector&lt;string&gt;::iterator it = v[j].begin();it != v[j].end(); it++) {
+            cout&lt;&lt;*it&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解PAT B1013:数素数]]></title>
         <id>https://jiaqiwang98.github.io/post/ti-jie-pat-b1013shu-su-shu</id>
