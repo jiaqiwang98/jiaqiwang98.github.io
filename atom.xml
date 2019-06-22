@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-06-22T12:09:11.939Z</updated>
+    <updated>2019-06-22T12:10:53.580Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -17,8 +17,8 @@
         </link>
         <updated>2019-06-22T12:07:04.000Z</updated>
         <content type="html"><![CDATA[<h2 id="题目">题目</h2>
-<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a>
-这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
+<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a></p>
+<p>这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
 <h2 id="思路">思路：</h2>
 <p>建立一个<code>vector&lt;string&gt;</code>型的数组<code>v[course]</code>，<code>course</code>是这门课的编号，数组里装选这门课的所有学生名字。然后根据题目要求输出课编号，选课人数即为<code>v[i].size()</code>，遍历输出每个名字。</p>
 <p>坑点：<strong><code>Then output the students' names in alphabetical order.</code></strong>  输出的名字按字典序排列。没注意到这个你就会WA。</p>

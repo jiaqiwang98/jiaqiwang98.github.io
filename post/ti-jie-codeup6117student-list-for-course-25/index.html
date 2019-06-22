@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1561205344683">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1561205452166">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1561205344683" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1561205452166" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -97,8 +97,8 @@
             
             <div class="post-content">
               <h2 id="题目">题目</h2>
-<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a>
-这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
+<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a></p>
+<p>这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
 <h2 id="思路">思路：</h2>
 <p>建立一个<code>vector&lt;string&gt;</code>型的数组<code>v[course]</code>，<code>course</code>是这门课的编号，数组里装选这门课的所有学生名字。然后根据题目要求输出课编号，选课人数即为<code>v[i].size()</code>，遍历输出每个名字。</p>
 <p>坑点：<strong><code>Then output the students' names in alphabetical order.</code></strong>  输出的名字按字典序排列。没注意到这个你就会WA。</p>
