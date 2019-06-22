@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>题解Codeup6117:Student List for Course (25) | Jiaqi`s Blog</title>
+<title>题解Codeup6114:Course List for Student(字符串Hash+vector) | Jiaqi`s Blog</title>
 <meta name="description" content="脑门渐秃终不悔，为码消得人憔悴">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,48 +92,105 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">题解Codeup6117:Student List for Course (25)</h2>
+            <h2 class="post-title">题解Codeup6114:Course List for Student(字符串Hash+vector)</h2>
             <div class="post-date">2019-06-22</div>
             
             <div class="post-content">
-              <h2 id="题目">题目</h2>
-<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a></p>
-<p>这个专题的做题顺序应该是6117-&gt;6114......第一个直接暴力会超时，需要字符串Hash一下，6117具体的做法下回分解。</p>
+              <h2 id="问题">问题：</h2>
+<p><a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=0">http://codeup.cn/problem.php?cid=100000596&amp;pid=0</a></p>
 <h2 id="思路">思路：</h2>
-<p>建立一个<code>vector&lt;string&gt;</code>型的数组<code>v[course]</code>，<code>course</code>是这门课的编号，数组里装选这门课的所有学生名字。然后根据题目要求输出课编号，选课人数即为<code>v[i].size()</code>，遍历输出每个名字。</p>
-<p>坑点：<strong><code>Then output the students' names in alphabetical order.</code></strong>  输出的名字按字典序排列。没注意到这个你就会WA。</p>
-<h2 id="题解">题解：</h2>
+<p>这道题相当于Codeup6117(<a href="http://codeup.cn/problem.php?cid=100000596&amp;pid=1">http://codeup.cn/problem.php?cid=100000596&amp;pid=1</a>)的流程反过来，所以一开始打算用<code>Hash+vector</code>存，但是想了想这道题在STL这一章应该用不到Hash，就写出了如下的暴力代码。</p>
+<h4 id="结果时间超限14">结果:时间超限14%</h4>
 <pre><code class="language-C++">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
 const int maxn = 2550;
+const int maxs = 40005;
 using namespace std;
 int main(){
     int n,k;
     cin&gt;&gt;n&gt;&gt;k;
-    string name;
     vector&lt;string&gt; v[maxn];
-    while(n--){
-        int c,course;
-        cin&gt;&gt;name;
-        cin&gt;&gt;c;
-        for (int i = 1; i &lt;= c; ++i) {
-            cin&gt;&gt;course;
-            v[course].push_back(name);
+    vector&lt;int &gt; na;
+    for (int j = 1; j &lt;= k; ++j) {
+        string name;
+        int index,nums;
+        cin&gt;&gt;index&gt;&gt;nums;
+        for (int i = 1; i &lt;= nums; ++i) {
+            cin&gt;&gt;name;
+            v[index].push_back(name);
         }
     }
-    for (int j = 1; j &lt;= k; ++j) {
-        cout&lt;&lt;j&lt;&lt;&quot; &quot;;
-        cout&lt;&lt;v[j].size()&lt;&lt;endl;
-        sort(v[j].begin(),v[j].end());     //字典序排列容器中的名字字符串
-        for (vector&lt;string&gt;::iterator it = v[j].begin();it != v[j].end(); it++) {
-            cout&lt;&lt;*it&lt;&lt;endl;
+    string q;
+    while(cin&gt;&gt;q){
+        cout&lt;&lt;q&lt;&lt;&quot; &quot;;
+        for (int i = 1; i &lt;= k; ++i) {
+            for (auto it = v[i].begin(); it != v[i].end(); it++) {
+                if(*it == q){
+                    na.push_back(i);
+                }
+            }
         }
+        cout&lt;&lt;na.size()&lt;&lt;&quot; &quot;;
+        for(auto it2 = na.begin(); it2 != na.end(); it2++){
+
+            cout&lt;&lt;*(it2)&lt;&lt;&quot; &quot;;
+        }
+        cout&lt;&lt;endl;
+        na.clear();
+    }
+    return 0;
+}
+
+</code></pre>
+<h2 id="题解">题解：</h2>
+<p>以下是Hash+vector的AC代码</p>
+<h4 id="ac">AC</h4>
+<p>需要注意！输出容器内课程编号应排序为升序，原题**<code>and finally the indices of the courses in increasing order.</code>**  否则会“答案错误57%”</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 26 * 26 * 26 * 10 + 10;
+int hashTable(char s[]){		
+//满足最后一位是数字，可以直接用《算法笔记》中的Hash模版
+    int id = 0;
+    for (int i = 0; i &lt; strlen(s) - 1; ++i) {
+        id = id * 26 + (s[i] - 'A');
+    }
+    id = id * 10 + (s[strlen(s) - 1] - '0');
+    return id;
+}
+int main(){
+    int n,k;
+    char name[5];
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);	//scanf尽可能替换cin
+    vector&lt;int &gt; v[maxn];
+    for (int i = 1; i &lt;= k; ++i) {
+        int c,c_nums;
+        scanf(&quot;%d%d&quot; ,&amp;c ,&amp;c_nums);
+        for (int j = 1; j &lt;= c_nums; ++j) {
+            scanf(&quot;%s&quot;,name);
+            v[hashTable(name)].push_back(c);
+        }
+    }
+    while(scanf(&quot;%s&quot;,name)!=EOF){
+        printf(&quot;%s &quot;,name);           //printf尽可能替换cout
+        printf(&quot;%d &quot;,v[hashTable(name)].size());
+        sort(v[hashTable(name)].begin(),v[hashTable(name)].end());   
+        //样例输出为升序，如果不加sort会“答案错误57%”
+        for (vector&lt;int&gt;::iterator it = v[hashTable(name)].begin();
+        it != v[hashTable(name)].end();it++) {
+            cout&lt;&lt;*it&lt;&lt;&quot; &quot;;
+        }
+        cout&lt;&lt;endl;
     }
     return 0;
 }
 </code></pre>
+<p>明天就回家避暑去了，应该会继续刷题的吧🌚</p>
 
             </div>
             
@@ -148,9 +205,9 @@ int main(){
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://jiaqiwang98.github.io/post/ti-jie-pat-b1013shu-su-shu">
+                <a href="https://jiaqiwang98.github.io/post/ti-jie-codeup6117student-list-for-course-25">
                   <h3 class="post-title">
-                    题解PAT B1013:数素数
+                    题解Codeup6117:Student List for Course (25)
                   </h3>
                 </a>
               </div>
