@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-01T16:09:02.138Z</updated>
+    <updated>2019-07-02T16:05:03.143Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -16,8 +16,14 @@
         <link href="https://jiaqiwang98.github.io/post/java-zhong-javalangnullpointerexceptionbao-cuo-de-jie-jue-fang-fa">
         </link>
         <updated>2019-07-01T16:02:02.000Z</updated>
-        <content type="html"><![CDATA[<p>今天在Java小学期编写一道类似C++“结构体排序”的题时出现了这样的错误
-<img src="https://jiaqiwang98.github.io/post-images/1561997149741.png" alt=""></p>
+        <content type="html"><![CDATA[<p>昨天在Java小学期编写一道类似C++“结构体排序”的题时出现了这样的错误
+<img src="https://jiaqiwang98.github.io/post-images/1561997149741.png" alt="">
+程序代码如下
+<img src="https://jiaqiwang98.github.io/post-images/1562073349701.png" alt="">
+显示第13行<code>NullPointerException</code>空指针异常
+经查发现是只在第9行对结构体数组分配了内存空间，而没有对每个<code>nums[i]</code>进行实例化而产生错误。
+添加<code>nums[i] = new Student();</code>后编译通过
+<img src="https://jiaqiwang98.github.io/post-images/1562073755859.png" alt=""></p>
 ]]></content>
     </entry>
     <entry>
