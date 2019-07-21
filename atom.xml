@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-02T16:05:03.143Z</updated>
+    <updated>2019-07-21T04:02:55.738Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -11,18 +11,28 @@
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
     <entry>
+        <title type="html"><![CDATA[Y]]></title>
+        <id>https://jiaqiwang98.github.io/post/for-y</id>
+        <link href="https://jiaqiwang98.github.io/post/for-y">
+        </link>
+        <updated>2019-07-21T03:58:07.000Z</updated>
+        <content type="html"><![CDATA[<p>These are the words I held back, as I was leaving too soon.<br>
+I was enchanted to meet you.</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Java中"java.lang.NullPointerException"报错的解决方法]]></title>
         <id>https://jiaqiwang98.github.io/post/java-zhong-javalangnullpointerexceptionbao-cuo-de-jie-jue-fang-fa</id>
         <link href="https://jiaqiwang98.github.io/post/java-zhong-javalangnullpointerexceptionbao-cuo-de-jie-jue-fang-fa">
         </link>
         <updated>2019-07-01T16:02:02.000Z</updated>
-        <content type="html"><![CDATA[<p>昨天在Java小学期编写一道类似C++“结构体排序”的题时出现了这样的错误
-<img src="https://jiaqiwang98.github.io/post-images/1561997149741.png" alt="">
-程序代码如下
-<img src="https://jiaqiwang98.github.io/post-images/1562073349701.png" alt="">
-显示第13行<code>NullPointerException</code>空指针异常
-经查发现是只在第9行对结构体数组分配了内存空间，而没有对每个<code>nums[i]</code>进行实例化而产生错误。
-添加<code>nums[i] = new Student();</code>后编译通过
+        <content type="html"><![CDATA[<p>昨天在Java小学期编写一道类似C++“结构体排序”的题时出现了这样的错误<br>
+<img src="https://jiaqiwang98.github.io/post-images/1561997149741.png" alt=""><br>
+程序代码如下<br>
+<img src="https://jiaqiwang98.github.io/post-images/1562073349701.png" alt=""><br>
+显示第13行<code>NullPointerException</code>空指针异常<br>
+经查发现是只在第9行对结构体数组分配了内存空间，而没有对每个<code>nums[i]</code>进行实例化而产生错误。<br>
+添加<code>nums[i] = new Student();</code>后编译通过<br>
 <img src="https://jiaqiwang98.github.io/post-images/1562073755859.png" alt=""></p>
 ]]></content>
     </entry>
@@ -224,7 +234,7 @@ int main(){
 
 </code></pre>
 <h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
-<p>1.<code>maxn</code>一开始开的太小了，有几个测试点WA了
+<p>1.<code>maxn</code>一开始开的太小了，有几个测试点WA了<br>
 2.输出格式要注意，最后一个输出结果后面也不能带有空格，否则就会<strong>Presentation Error</strong></p>
 ]]></content>
     </entry>
@@ -235,7 +245,7 @@ int main(){
         </link>
         <updated>2019-06-19T14:49:52.000Z</updated>
         <content type="html"><![CDATA[<p>正题之前先看一下乞丐版的字符串Hash：</p>
-<p>问题：
+<p>问题：<br>
 给出N个字符串（由恰好三位大写字母组成），再给出M个查询字符串，问每个查询字符串在N个字符串中出现的次数？</p>
 <p>思路就是将字符串每一位看成26进制数的每一位（因为题目只有大写，如果有小写的话就是<strong>52</strong>进制，以此类推，包含所有ASCII码的字符串就是<strong>127</strong>进制），然后进行换算得出唯一的Hash值</p>
 <h2 id="题解">题解</h2>
@@ -500,8 +510,8 @@ int main(int argc, char const *argv[])
 <p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
 <p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
 <h4 id="还有一道类似的题codeup6112be-unique">还有一道类似的题Codeup6112：Be Unique</h4>
-<p>题目：
-<a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=2">http://codeup.cn/problem.php?cid=100000582&amp;pid=2</a>
+<p>题目：<br>
+<a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=2">http://codeup.cn/problem.php?cid=100000582&amp;pid=2</a><br>
 题解在此：</p>
 <pre><code class="language-C++">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
@@ -539,7 +549,7 @@ int main(){
         </link>
         <updated>2019-06-15T16:06:03.000Z</updated>
         <content type="html"><![CDATA[<h2 id="题目">题目：</h2>
-<p>本题为胡凡《算法笔记》STL章节的一道练习题。
+<p>本题为胡凡《算法笔记》STL章节的一道练习题。<br>
 <a href="http://codeup.cn/problem.php?cid=100000597&amp;pid=0">http://codeup.cn/problem.php?cid=100000597&amp;pid=0</a></p>
 <h2 id="题目大意">题目大意：</h2>
 <p>给定几个集合，求指定编号集合的相似率。</p>
@@ -657,16 +667,6 @@ int main(){
 <li>[x]为详细参观过</li>
 <li>[ ]为只参观过一小部分</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2019.6.7]]></title>
-        <id>https://jiaqiwang98.github.io/post/201967</id>
-        <link href="https://jiaqiwang98.github.io/post/201967">
-        </link>
-        <updated>2019-06-07T09:41:36.000Z</updated>
-        <content type="html"><![CDATA[<p>距离考完数学的那个下午已经过去两年了，我依然意难平，</p>
-<p>这一段输给别人的，下一段能赢回来吗？</p>
 ]]></content>
     </entry>
 </feed>
