@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-21T04:03:33.094Z</updated>
+    <updated>2019-07-22T09:23:35.159Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,16 +10,6 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[Y]]></title>
-        <id>https://jiaqiwang98.github.io/post/for-y</id>
-        <link href="https://jiaqiwang98.github.io/post/for-y">
-        </link>
-        <updated>2019-07-21T03:58:07.000Z</updated>
-        <content type="html"><![CDATA[<p>These are the words I held back, as I was leaving too soon.<br>
-&quot;I was enchanted to meet you.&quot;</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Java中"java.lang.NullPointerException"报错的解决方法]]></title>
         <id>https://jiaqiwang98.github.io/post/java-zhong-javalangnullpointerexceptionbao-cuo-de-jie-jue-fang-fa</id>
@@ -667,6 +657,16 @@ int main(){
 <li>[x]为详细参观过</li>
 <li>[ ]为只参观过一小部分</li>
 </ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019.6.7]]></title>
+        <id>https://jiaqiwang98.github.io/post/201967</id>
+        <link href="https://jiaqiwang98.github.io/post/201967">
+        </link>
+        <updated>2019-06-07T09:41:36.000Z</updated>
+        <content type="html"><![CDATA[<p>距离考完数学的那个下午已经过去两年了，我依然意难平，</p>
+<p>这一段输给别人的，下一段能赢回来吗？</p>
 ]]></content>
     </entry>
 </feed>
