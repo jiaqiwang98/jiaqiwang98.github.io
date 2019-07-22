@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-22T10:21:11.566Z</updated>
+    <updated>2019-07-22T11:06:29.961Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,91 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaWeb电商实现商品查询功能]]></title>
+        <id>https://jiaqiwang98.github.io/post/javaweb-dian-shang-shi-xian-shang-pin-cha-xun-gong-neng</id>
+        <link href="https://jiaqiwang98.github.io/post/javaweb-dian-shang-shi-xian-shang-pin-cha-xun-gong-neng">
+        </link>
+        <updated>2019-07-22T10:31:57.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>效果图<br>
+<img src="https://jiaqiwang98.github.io/post-images/1563791870467.png" alt=""><br>
+<img src="https://jiaqiwang98.github.io/post-images/1563791976508.png" alt=""></p>
+</li>
+<li>
+<p>前端Jsp页面</p>
+</li>
+</ul>
+<pre><code class="language-JavaScript">        &lt;!-- Search Area Start --&gt;
+                 &lt;ul class=&quot;ht-dropdown search-box-view&quot;&gt;
+                        &lt;li&gt;
+                        &lt;form action=&quot;servlet/SearchServlet&quot; class=&quot;position-relative&quot;&gt;
+                            &lt;input class=&quot;email&quot; placeholder=&quot;Search our catalog&quot; name=&quot;cond&quot; type=&quot;text&quot;&gt;
+                            &lt;button type=&quot;submit&quot; class=&quot;submit&quot;&gt;&lt;i class=&quot;icon-search&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                        &lt;/form&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+        &lt;!-- Search Area End --&gt;
+</code></pre>
+<ul>
+<li>Servlet层</li>
+</ul>
+<pre><code class="language-JAVA">protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        String condition = request.getParameter(&quot;cond&quot;);
+        String path = &quot;/jsp/searchResult.jsp&quot;;
+        try {
+            GoodsDao dao = DAOFactory.getGoodsServiceInstance();
+            List&lt;Goods&gt; daolist =  dao.searchGoods(condition);
+            request.getSession().setAttribute(&quot;cond&quot;,condition);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        String truePath = request.getContextPath() + &quot;/&quot; + path;
+        response.sendRedirect(truePath);
+    }
+</code></pre>
+<ul>
+<li>DAO层</li>
+</ul>
+<pre><code class="language-JAVA">@Override
+    public List&lt;Goods&gt; searchGoods(String cond) throws Exception{
+        //模糊查询的精髓:使用占位符 % xx %
+        String newcond = &quot;%&quot; + cond + &quot;%&quot;;
+        String sql = &quot;select * from goods where gname like ?&quot;;
+        Statement st = null;
+        ResultSet rs = null;
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setString(1,newcond);
+        rs = pstmt.executeQuery();
+        //将查询得到的全部商品信息存放在List&lt;Goods&gt;中
+        List&lt;Goods&gt; goodsList = new ArrayList&lt;Goods&gt;();
+        Goods goods;
+        while (rs.next()) {
+            System.out.println(&quot;serlvet deplyed!&quot;);
+            int gid = rs.getInt(&quot;gid&quot;);
+            String gname = rs.getString(&quot;gname&quot;);
+            int number = rs.getInt(&quot;number&quot;);
+            String photo = rs.getString(&quot;gphoto&quot;);
+            String type = rs.getString(&quot;type&quot;);
+            String producer = rs.getString(&quot;producer&quot;);
+            float price = rs.getFloat(&quot;price&quot;);
+            float carriage = rs.getFloat(&quot;carriage&quot;);
+            String pdate = rs.getDate(&quot;pdate&quot;).toString();
+            String paddress = rs.getString(&quot;paddress&quot;);
+            String described = rs.getString(&quot;described&quot;);
+            goods = new Goods(gname, number, photo, type, producer, price,
+                    carriage, pdate, paddress, described);
+            goods.setGid(gid);
+            goodsList.add(goods);
+            System.out.println(goods.getGname());
+        }
+        return goodsList;
+    }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript弹窗文字乱码问题的解决方法]]></title>
         <id>https://jiaqiwang98.github.io/post/javascript-dan-chuang-wen-zi-luan-ma-wen-ti-de-jie-jue-fang-fa</id>
@@ -607,72 +692,6 @@ int main(){
 <p>2.<code>find()</code>函数如果没有找到元素则返回<code>s.end()</code></p>
 <p>类型为迭代器而不是布尔值，,所以判断语句应该为<code>if (s[r].find(*it) != s[r].end())</code></p>
 <p>而不是<code>if (s[r].find(*it))</code></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Tour to Top University]]></title>
-        <id>https://jiaqiwang98.github.io/post/tour-to-top-university</id>
-        <link href="https://jiaqiwang98.github.io/post/tour-to-top-university">
-        </link>
-        <updated>2019-06-15T14:23:37.000Z</updated>
-        <summary type="html"><![CDATA[<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
-<!-- more -->
-<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
-<h3 id="北京">北京</h3>
-<ul>
-<li>[x]中国地质大学 (CUGB) （为什么它会在第一位呢？哈哈你猜）</li>
-<li>[x]清华大学 (THU)</li>
-<li>[x]北京大学 (PKU)</li>
-<li>[ ]中国人民大学 (RUC)</li>
-<li>[x]北京航空航天大学 (BUAA)</li>
-<li>[x]北京师范大学 (BNU)</li>
-<li>[x]北京理工大学 (BIT)</li>
-<li>[x]中央财经大学 (CUFE)</li>
-<li>[x]北京外国语大学 (BFSU)</li>
-<li>[x]中国农业大学 (CAU)</li>
-<li>[x]北京邮电大学 (BUPT)</li>
-<li>[x]北京交通大学 (BJTU)</li>
-<li>[x]北京科技大学 (USTB)</li>
-<li>[x]华北电力大学 (NCEPU)</li>
-<li>[x]北京林业大学 (BFU)</li>
-<li>[x]北京语言大学 (BLCU)</li>
-</ul>
-<h3 id="天津">天津</h3>
-<ul>
-<li>[x]天津大学 (TJU)</li>
-<li>[ ]南开大学 (NKU)</li>
-</ul>
-<h3 id="上海">上海</h3>
-<ul>
-<li>[x]复旦大学 (FDU)</li>
-<li>[x]同济大学 (TJU)</li>
-<li>[x]上海财经大学 (SHUFE)</li>
-</ul>
-<h3 id="广州">广州</h3>
-<ul>
-<li>[x]中山大学 (SYSU)</li>
-</ul>
-<h3 id="成都">成都</h3>
-<ul>
-<li>[x]四川大学 (SCU)</li>
-<li>[x]电子科技大学 (UESTC)</li>
-<li>[x]西南交通大学 (SWJTU)</li>
-</ul>
-<h3 id="杭州">杭州</h3>
-<ul>
-<li>[x]浙江大学 (ZJU)</li>
-</ul>
-<h3 id="长沙">长沙</h3>
-<ul>
-<li>[x]湖南大学 (HNU)</li>
-</ul>
-<h4 id="备注">备注</h4>
-<ul>
-<li>[x]为详细参观过</li>
-<li>[ ]为只参观过一小部分</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
