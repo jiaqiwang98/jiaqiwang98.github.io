@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-22T09:54:01.842Z</updated>
+    <updated>2019-07-22T10:21:11.566Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -24,16 +24,6 @@
 <img src="https://jiaqiwang98.github.io/post-images/1563789170298.png" alt=""><br>
 重新运行，结果如图<br>
 <img src="https://jiaqiwang98.github.io/post-images/1563789164097.png" alt=""></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Y]]></title>
-        <id>https://jiaqiwang98.github.io/post/for-y</id>
-        <link href="https://jiaqiwang98.github.io/post/for-y">
-        </link>
-        <updated>2019-07-21T03:58:07.000Z</updated>
-        <content type="html"><![CDATA[<p>These are the words I held back, as I was leaving too soon.<br>
-&quot;I was enchanted to meet you.&quot;</p>
 ]]></content>
     </entry>
     <entry>
@@ -617,6 +607,72 @@ int main(){
 <p>2.<code>find()</code>函数如果没有找到元素则返回<code>s.end()</code></p>
 <p>类型为迭代器而不是布尔值，,所以判断语句应该为<code>if (s[r].find(*it) != s[r].end())</code></p>
 <p>而不是<code>if (s[r].find(*it))</code></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Tour to Top University]]></title>
+        <id>https://jiaqiwang98.github.io/post/tour-to-top-university</id>
+        <link href="https://jiaqiwang98.github.io/post/tour-to-top-university">
+        </link>
+        <updated>2019-06-15T14:23:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
+<!-- more -->
+<p>我每到一个城市旅行，总会去这个城市的大学看一看，这篇博文记录了我目前为止去过的所有中国知名大学。希望有朝一日我也能成为其中一员吧 :-)</p>
+<h3 id="北京">北京</h3>
+<ul>
+<li>[x]中国地质大学 (CUGB) （为什么它会在第一位呢？哈哈你猜）</li>
+<li>[x]清华大学 (THU)</li>
+<li>[x]北京大学 (PKU)</li>
+<li>[ ]中国人民大学 (RUC)</li>
+<li>[x]北京航空航天大学 (BUAA)</li>
+<li>[x]北京师范大学 (BNU)</li>
+<li>[x]北京理工大学 (BIT)</li>
+<li>[x]中央财经大学 (CUFE)</li>
+<li>[x]北京外国语大学 (BFSU)</li>
+<li>[x]中国农业大学 (CAU)</li>
+<li>[x]北京邮电大学 (BUPT)</li>
+<li>[x]北京交通大学 (BJTU)</li>
+<li>[x]北京科技大学 (USTB)</li>
+<li>[x]华北电力大学 (NCEPU)</li>
+<li>[x]北京林业大学 (BFU)</li>
+<li>[x]北京语言大学 (BLCU)</li>
+</ul>
+<h3 id="天津">天津</h3>
+<ul>
+<li>[x]天津大学 (TJU)</li>
+<li>[ ]南开大学 (NKU)</li>
+</ul>
+<h3 id="上海">上海</h3>
+<ul>
+<li>[x]复旦大学 (FDU)</li>
+<li>[x]同济大学 (TJU)</li>
+<li>[x]上海财经大学 (SHUFE)</li>
+</ul>
+<h3 id="广州">广州</h3>
+<ul>
+<li>[x]中山大学 (SYSU)</li>
+</ul>
+<h3 id="成都">成都</h3>
+<ul>
+<li>[x]四川大学 (SCU)</li>
+<li>[x]电子科技大学 (UESTC)</li>
+<li>[x]西南交通大学 (SWJTU)</li>
+</ul>
+<h3 id="杭州">杭州</h3>
+<ul>
+<li>[x]浙江大学 (ZJU)</li>
+</ul>
+<h3 id="长沙">长沙</h3>
+<ul>
+<li>[x]湖南大学 (HNU)</li>
+</ul>
+<h4 id="备注">备注</h4>
+<ul>
+<li>[x]为详细参观过</li>
+<li>[ ]为只参观过一小部分</li>
+</ul>
 ]]></content>
     </entry>
 </feed>
