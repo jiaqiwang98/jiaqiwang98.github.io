@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2019-07-22T11:06:49.036Z</updated>
+    <updated>2019-10-29T12:39:17.051Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,213 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[输出二维向量vector<vector<T>>的技巧]]></title>
+        <id>https://jiaqiwang98.github.io/post/shu-chu-er-wei-xiang-liang-vectorlessvectorlesstgreatergreaterde-ji-qiao</id>
+        <link href="https://jiaqiwang98.github.io/post/shu-chu-er-wei-xiang-liang-vectorlessvectorlesstgreatergreaterde-ji-qiao">
+        </link>
+        <updated>2019-09-25T13:20:47.000Z</updated>
+        <content type="html"><![CDATA[<p>刷题时遇到的，可能没有什么卵用的小技巧...</p>
+<pre><code class="language-c++">
+vector&lt;vector&lt;int&gt;&gt; s;
+while(!s.empty()){
+        for (auto it = s.front().begin();it != s.front().end();it ++) {
+            cout&lt;&lt;*it&lt;&lt; &quot; &quot;;
+        }
+        s.erase(s.begin());  //删除输出过的行
+        cout&lt;&lt;endl;
+    }
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DFS入门题记录]]></title>
+        <id>https://jiaqiwang98.github.io/post/dfs-ji-lu</id>
+        <link href="https://jiaqiwang98.github.io/post/dfs-ji-lu">
+        </link>
+        <updated>2019-09-10T12:14:34.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="codeup-5972">Codeup 5972</h3>
+<pre><code class="language-c++">
+#include &lt;iostream&gt;
+using namespace std;
+bool visit[15];
+int num[15];
+int n;
+void show(){
+    for (int i = 1; i &lt;= n; ++i) {
+        cout&lt;&lt;num[i]&lt;&lt;&quot; &quot;;
+    }
+    cout&lt;&lt;endl;
+}
+void dfs(int step){
+    if (step &gt;  n){
+        show();
+    }
+    for (int i = 1; i &lt;= n; ++i) {
+        if (visit[i] == 0){
+            num[step] = i;
+            visit[i] = 1;
+            dfs(step + 1);
+            visit[i] = 0;
+        }
+    }
+}
+int main(){
+    cin&gt;&gt;n;
+    dfs(1);
+    return 0;
+}
+</code></pre>
+<h3 id="codeup-5973">Codeup 5973</h3>
+<pre><code class="language-c++">
+#include &lt;iostream&gt;
+using namespace std;
+bool vis[30] = {0};
+int num[30];
+int n,r;
+void dfs(int step){
+    if (step == r + 1){
+        for (int i = 1; i &lt;= r; ++i) {
+            cout&lt;&lt;num[i]&lt;&lt;&quot; &quot;;
+        }
+        cout&lt;&lt;endl;
+        //return;
+    }
+    for (int j = num[step - 1]; j &lt;= n; ++j) {
+        if (vis[j] == 0){
+            vis[j] = 1;
+            num[step] = j;
+            dfs(step + 1);
+            vis[j] = 0;
+        }
+    }
+    return;
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;r;
+    num[0] = 1;
+    dfs(1);
+    return 0;
+}
+</code></pre>
+<h3 id="洛谷p1219">洛谷P1219</h3>
+<pre><code class="language-c++">
+#include &lt;iostream&gt;
+using namespace std;
+int col[100] = {0},d1[100] = {0},d2[100] = {0};
+int vis[100] = {0};
+int n;
+int cnt = 0;
+int ans = 0;
+//d1左下到右上(i+j),d2左上到右下(i-j+n)
+//i为行,j为列
+void print(){
+    if(ans &lt; 3){
+        for (int i = 1; i &lt;= n; ++i) {
+            cout&lt;&lt;vis[i]&lt;&lt;&quot; &quot;;
+        }
+        cout&lt;&lt;endl;
+    }
+
+    cnt++;
+    //return;
+}
+void dfs(int step){
+    if (step &gt; n){
+        print();
+        ans ++;
+        return;
+    }
+    for (int i = 1; i &lt;= n; ++i) {
+        if (col[i] == 0 &amp;&amp; d1[step + i] == 0 &amp;&amp; d2[step - i + n] == 0){
+            vis[step] = i;
+            col[i] = 1;
+            d1[step + i] = 1;
+            d2[step - i + n] = 1;
+            //cnt++;
+            dfs(step + 1);
+            //cnt--;
+            col[i] = 0;
+            d1[step + i] = 0;
+            d2[step - i + n] = 0;
+        }
+    }
+}
+int main(){
+    cin&gt;&gt;n;
+    dfs(1);
+    cout&lt;&lt;cnt;
+    return 0;
+}
+</code></pre>
+<p>###Codeup5976</p>
+<pre><code class="language-c++">
+#include &lt;iostream&gt;
+using namespace std;
+int col[100] = {0},d1[100] = {0},d2[100] = {0};
+//d1左下到右上(i+j),d2左上到右下(i-j+n)
+//i为行,j为列
+int vis[100] = {0};
+int n;
+bool flag = 0; //标记是否有解
+void print(){
+    for (int i = 1; i &lt;= n; ++i) {
+        cout&lt;&lt;vis[i]&lt;&lt;&quot; &quot;;
+    }
+    flag = 1;
+    cout&lt;&lt;endl;
+}
+void dfs(int step){
+    if (step &gt; n){
+        print();
+
+        return;
+    }
+    for (int i = 1; i &lt;= n; ++i) {
+        if (col[i] == 0 &amp;&amp; d1[step + i] == 0 &amp;&amp; d2[step - i + n] == 0){
+            vis[step] = i;
+            col[i] = 1;
+            d1[step + i] = 1;
+            d2[step - i + n] = 1;
+            dfs(step + 1);
+            col[i] = 0;
+            d1[step + i] = 0;
+            d2[step - i + n] = 0;
+        }
+    }
+}
+int main(){
+    cin&gt;&gt;n;
+    dfs(1);
+    if(flag == 0) printf(&quot;no solute!&quot;);//无解
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Leetcode26. 删除排序数组中的重复项]]></title>
+        <id>https://jiaqiwang98.github.io/post/leetcode26-shan-chu-pai-xu-shu-zu-zhong-de-chong-fu-xiang</id>
+        <link href="https://jiaqiwang98.github.io/post/leetcode26-shan-chu-pai-xu-shu-zu-zhong-de-chong-fu-xiang">
+        </link>
+        <updated>2019-07-29T05:57:40.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-c++">class Solution {
+public:
+    int removeDuplicates(vector&lt;int&gt;&amp; nums) {
+        set&lt;int&gt; a;
+        for (auto it = nums.begin();it != nums.end();it++) {
+            a.insert(*it);
+        }
+        nums.clear();
+        for (auto it = a.begin();it != a.end();it++) {
+            nums.push_back(*it);
+        }
+        return nums.size();
+    }
+};
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaWeb电商实现商品查询功能]]></title>
         <id>https://jiaqiwang98.github.io/post/javaweb-dian-shang-shi-xian-shang-pin-cha-xun-gong-neng</id>
@@ -481,217 +688,6 @@ int main(){
 
 </code></pre>
 <p>这道题的唯一一个坑点就是第二行输入也就是<code>b</code>串也是可能含空格的，所以不能用<code>scanf(&quot;%s&quot;,b)</code>也需要用<code>gets(b)</code>不然会WA。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解PAT B1023:组个最小数]]></title>
-        <id>https://jiaqiwang98.github.io/post/ti-jie-pat1023zu-ge-zui-xiao-shu</id>
-        <link href="https://jiaqiwang98.github.io/post/ti-jie-pat1023zu-ge-zui-xiao-shu">
-        </link>
-        <updated>2019-06-19T13:24:50.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="题目">题目</h2>
-<p>https://pintia.cn/problem-sets/994805260223102976/problems/994805298269634560</p>
-<h2 id="我的思路">我的思路</h2>
-<p>没什么好说的，贪心基本题，0不能在第一位</p>
-<h2 id="题解">题解</h2>
-<pre><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main(){
-    int a[10];
-    for (int i = 0; i &lt; 10; ++i) {
-        cin&gt;&gt;a[i];
-    }
-    for (int k = 1; k &lt; 10; ++k) {
-        if (a[k] != 0){
-            cout&lt;&lt;k;
-            a[k] --;
-            break;
-        }
-    }
-    for (int j = 0; j &lt; 10; ) {
-        if (a[j] != 0){
-            cout&lt;&lt;j;
-            a[j] --;
-        }
-        if(a[j] == 0){
-            j++;
-        }
-    }
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解Codeup1782:谁是你的潜在朋友]]></title>
-        <id>https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you</id>
-        <link href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup1782shui-shi-ni-de-qian-zai-peng-you">
-        </link>
-        <updated>2019-06-16T14:31:31.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="题目">题目</h2>
-<p><a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=0">http://codeup.cn/problem.php?cid=100000582&amp;pid=0</a></p>
-<h2 id="题目大意">题目大意：</h2>
-<p>“臭味相投”——这是我们描述朋友时喜欢用的词汇。两个人是朋友通常意味着他们存在着许多共同的兴趣。然而作为一个宅男，你发现自己与他人相互了解的机会 并不太多。幸运的是，你意外得到了一份北大图书馆的图书借阅记录，于是你挑灯熬夜地编程，想从中发现潜在的朋友。</p>
-<p>首先你对借阅记录进行了一番整理，把N个读者依次编号为1,2,…,N，把M本书依次编号为1,2,…,M。同时，按照“臭味相投”的原则，和你喜欢读同一本书的人，就是你的潜在朋友。你现在的任务是从这份借阅记录中计算出每个人有几个潜在朋友。</p>
-<h2 id="题解">题解：</h2>
-<h4 id="答案错误50">“答案错误50%”</h4>
-<pre><code class="language-c++">#include&lt;iostream&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int main(int argc, char const *argv[])
-{
-    int hash[210] ;
-    memset(hash,0,sizeof(hash));
-    int reader[100100];
-    int n,m,t;
-    cin&gt;&gt;n&gt;&gt;m;
-    for (int i = 1; i &lt;= n; ++i)
-    {
-        cin&gt;&gt;t;
-        reader[i] = t;
-        hash[t]++;
-    }
-    for (int i = 1; i &lt;= n; ++i)
-    {
-        if (hash[reader[i]] - 1 ==0)
-        {
-            cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
-        }else{
-            cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
-        }
-    }
-    return 0;
-}
-</code></pre>
-<h4 id="ac">“AC”</h4>
-<pre><code class="language-C++">#include&lt;iostream&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int main(int argc, char const *argv[])
-{
-    int n,m,t;
-    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){//多点测试输入格式
-        int hash[210] ;
-        memset(hash,0,sizeof(hash));
-        int reader[100100];
-        for (int i = 1; i &lt;= n; ++i)
-        {
-            cin&gt;&gt;t;
-            reader[i] = t;
-            hash[t]++;
-        }
-        for (int i = 1; i &lt;= n; ++i)
-        {
-            if (hash[reader[i]] - 1 ==0)
-            {
-                cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
-            }else{
-                cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
-            }
-        }
-    }
-    return 0;
-}
-
-</code></pre>
-<h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
-<p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
-<p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
-<h4 id="还有一道类似的题codeup6112be-unique">还有一道类似的题Codeup6112：Be Unique</h4>
-<p>题目：<br>
-<a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=2">http://codeup.cn/problem.php?cid=100000582&amp;pid=2</a><br>
-题解在此：</p>
-<pre><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int main(){
-    int n;
-    while(scanf(&quot;%d&quot;,&amp;n) != EOF){
-        int num[100100] = {0};
-        int hash[100100] = {0};
-        for (int i = 0; i &lt; n; ++i) {
-            cin&gt;&gt;num[i];
-            hash[num[i]] ++;
-        }
-        int j;
-        for (j = 0; j &lt; n; ++j) {
-            if (hash[num[j]] == 1){
-                cout&lt;&lt;num[j]&lt;&lt;endl;
-                break;
-            }
-        }
-        if (j == n) {
-            cout &lt;&lt; &quot;None&quot; &lt;&lt; endl;
-        }
-    }
-    return 0;
-}
-</code></pre>
-<p>该题需要注意的是<code>num[]</code>数组要开大些，否则会出现数据越界（<strong>RE</strong>）</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解Codeup6126:Set Similarity]]></title>
-        <id>https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity</id>
-        <link href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity">
-        </link>
-        <updated>2019-06-15T16:06:03.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="题目">题目：</h2>
-<p>本题为胡凡《算法笔记》STL章节的一道练习题。<br>
-<a href="http://codeup.cn/problem.php?cid=100000597&amp;pid=0">http://codeup.cn/problem.php?cid=100000597&amp;pid=0</a></p>
-<h2 id="题目大意">题目大意：</h2>
-<p>给定几个集合，求指定编号集合的相似率。</p>
-<p>相似率为：交集的元素个数/并集的元素个数*100%。</p>
-<h2 id="题解">题解：</h2>
-<pre><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;set&gt;
-#include &lt;iomanip&gt;
-using namespace std;
-int main(){
-    set&lt;int&gt; s[60];	
-    int n;
-    cin&gt;&gt;n;
-    int a,pos = 1,t;
-    while(n--){
-        cin&gt;&gt;a;
-        for (int i = 0; i &lt; a; ++i)
-        {
-            cin&gt;&gt;t;
-            s[pos].insert(t);
-        }
-        pos++;
-    }
-    int b,l,r;
-    double rate;
-    cin&gt;&gt;b;
-    while (b--){
-        cin&gt;&gt;l&gt;&gt;r;
-        int cnt = 0;
-        set&lt;int&gt;ss;
-        set&lt;int&gt;::iterator it;
-        for (it = s[l].begin(); it != s[l].end(); it++) {
-            ss.insert(*it);
-            if (s[r].find(*it) != s[r].end()){
-                cnt++;
-            }
-        }
-        for (it = s[r].begin(); it != s[r].end(); it++) {
-            ss.insert(*it);
-        }
-        rate = cnt * 1.0 / ss.size() * 100;
-        printf(&quot;%.1lf%%\n&quot;,rate);
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="what-i-learned遇到的坑">What I Learned（遇到的坑）</h2>
-<p>1.<code>set&lt;int&gt; s[60]</code> 容器类器也可以定义为数组</p>
-<p>2.<code>find()</code>函数如果没有找到元素则返回<code>s.end()</code></p>
-<p>类型为迭代器而不是布尔值，,所以判断语句应该为<code>if (s[r].find(*it) != s[r].end())</code></p>
-<p>而不是<code>if (s[r].find(*it))</code></p>
 ]]></content>
     </entry>
 </feed>
