@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>题解Codeup1782:谁是你的潜在朋友 | Jiaqi`s Blog</title>
+<meta name="description" content="To be a better one.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1573293642298">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?86568f2b142f8bc8efbb12977d62eb69";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://jiaqiwang98.github.io">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1573293642298" class="site-logo">
+        <h1 class="site-title">Jiaqi`s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      To be a better one.
+    </div>
+    <div class="site-footer">
+      Proudly Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://jiaqiwang98.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">题解Codeup1782:谁是你的潜在朋友</h2>
+            <div class="post-date">2019-06-16</div>
+            
+            <div class="post-content">
+              <h2 id="题目">题目</h2>
+<p><a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=0">http://codeup.cn/problem.php?cid=100000582&amp;pid=0</a></p>
+<h2 id="题目大意">题目大意：</h2>
+<p>“臭味相投”——这是我们描述朋友时喜欢用的词汇。两个人是朋友通常意味着他们存在着许多共同的兴趣。然而作为一个宅男，你发现自己与他人相互了解的机会 并不太多。幸运的是，你意外得到了一份北大图书馆的图书借阅记录，于是你挑灯熬夜地编程，想从中发现潜在的朋友。</p>
+<p>首先你对借阅记录进行了一番整理，把N个读者依次编号为1,2,…,N，把M本书依次编号为1,2,…,M。同时，按照“臭味相投”的原则，和你喜欢读同一本书的人，就是你的潜在朋友。你现在的任务是从这份借阅记录中计算出每个人有几个潜在朋友。</p>
+<h2 id="题解">题解：</h2>
+<h4 id="答案错误50">“答案错误50%”</h4>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int hash[210] ;
+    memset(hash,0,sizeof(hash));
+    int reader[100100];
+    int n,m,t;
+    cin&gt;&gt;n&gt;&gt;m;
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        cin&gt;&gt;t;
+        reader[i] = t;
+        hash[t]++;
+    }
+    for (int i = 1; i &lt;= n; ++i)
+    {
+        if (hash[reader[i]] - 1 ==0)
+        {
+            cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+        }else{
+            cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="ac">“AC”</h4>
+<pre><code class="language-C++">#include&lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int n,m,t;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){//多点测试输入格式
+        int hash[210] ;
+        memset(hash,0,sizeof(hash));
+        int reader[100100];
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            cin&gt;&gt;t;
+            reader[i] = t;
+            hash[t]++;
+        }
+        for (int i = 1; i &lt;= n; ++i)
+        {
+            if (hash[reader[i]] - 1 ==0)
+            {
+                cout&lt;&lt;&quot;BeiJu&quot;&lt;&lt;endl;
+            }else{
+                cout&lt;&lt;hash[reader[i]] - 1&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+<h2 id="what-i-learned遇到的坑">What I learned（遇到的坑）</h2>
+<p>1.<code>memset()</code>需要添加<code>&lt;cstring&gt;</code>头文件</p>
+<p>2.Codeup评测为多点测试（多点测试和单点测试的概念详见胡凡《算法算法》），输入需采用<code>while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</code>如果写成一次性运行的程序就会WA。</p>
+<h4 id="还有一道类似的题codeup6112be-unique">还有一道类似的题Codeup6112：Be Unique</h4>
+<p>题目：<br>
+<a href="http://codeup.cn/problem.php?cid=100000582&amp;pid=2">http://codeup.cn/problem.php?cid=100000582&amp;pid=2</a><br>
+题解在此：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(){
+    int n;
+    while(scanf(&quot;%d&quot;,&amp;n) != EOF){
+        int num[100100] = {0};
+        int hash[100100] = {0};
+        for (int i = 0; i &lt; n; ++i) {
+            cin&gt;&gt;num[i];
+            hash[num[i]] ++;
+        }
+        int j;
+        for (j = 0; j &lt; n; ++j) {
+            if (hash[num[j]] == 1){
+                cout&lt;&lt;num[j]&lt;&lt;endl;
+                break;
+            }
+        }
+        if (j == n) {
+            cout &lt;&lt; &quot;None&quot; &lt;&lt; endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>该题需要注意的是<code>num[]</code>数组要开大些，否则会出现数据越界（<strong>RE</strong>）</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://jiaqiwang98.github.io/tag/xWx8Pg9-Q" class="tag">
+                    刷题笔记
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jiaqiwang98.github.io/post/shua-ti-bi-ji-codeup100000597set-similarity">
+                  <h3 class="post-title">
+                    题解Codeup6126:Set Similarity
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

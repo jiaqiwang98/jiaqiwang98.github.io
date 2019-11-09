@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>JavaWeb电商实现商品查询功能 | Jiaqi`s Blog</title>
+<meta name="description" content="To be a better one.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1573293642298">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?86568f2b142f8bc8efbb12977d62eb69";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://jiaqiwang98.github.io">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1573293642298" class="site-logo">
+        <h1 class="site-title">Jiaqi`s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      To be a better one.
+    </div>
+    <div class="site-footer">
+      Proudly Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://jiaqiwang98.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">JavaWeb电商实现商品查询功能</h2>
+            <div class="post-date">2019-07-22</div>
+            
+            <div class="post-content">
+              <ul>
+<li>
+<p>效果图<br>
+<img src="https://jiaqiwang98.github.io/post-images/1563791870467.png" alt=""><br>
+<img src="https://jiaqiwang98.github.io/post-images/1563791976508.png" alt=""></p>
+</li>
+<li>
+<p>前端Jsp页面</p>
+</li>
+</ul>
+<pre><code class="language-JavaScript">        &lt;!-- Search Area Start --&gt;
+                 &lt;ul class=&quot;ht-dropdown search-box-view&quot;&gt;
+                        &lt;li&gt;
+                        &lt;form action=&quot;servlet/SearchServlet&quot; class=&quot;position-relative&quot;&gt;
+                            &lt;input class=&quot;email&quot; placeholder=&quot;Search our catalog&quot; name=&quot;cond&quot; type=&quot;text&quot;&gt;
+                            &lt;button type=&quot;submit&quot; class=&quot;submit&quot;&gt;&lt;i class=&quot;icon-search&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                        &lt;/form&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+        &lt;!-- Search Area End --&gt;
+</code></pre>
+<ul>
+<li>Servlet层</li>
+</ul>
+<pre><code class="language-JAVA">protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        String condition = request.getParameter(&quot;cond&quot;);
+        String path = &quot;/jsp/searchResult.jsp&quot;;
+        try {
+            GoodsDao dao = DAOFactory.getGoodsServiceInstance();
+            List&lt;Goods&gt; daolist =  dao.searchGoods(condition);
+            request.getSession().setAttribute(&quot;cond&quot;,condition);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        String truePath = request.getContextPath() + &quot;/&quot; + path;
+        response.sendRedirect(truePath);
+    }
+</code></pre>
+<ul>
+<li>DAO层</li>
+</ul>
+<pre><code class="language-JAVA">@Override
+    public List&lt;Goods&gt; searchGoods(String cond) throws Exception{
+        //模糊查询的精髓:使用占位符 % xx %
+        String newcond = &quot;%&quot; + cond + &quot;%&quot;;
+        String sql = &quot;select * from goods where gname like ?&quot;;
+        Statement st = null;
+        ResultSet rs = null;
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setString(1,newcond);
+        rs = pstmt.executeQuery();
+        //将查询得到的全部商品信息存放在List&lt;Goods&gt;中
+        List&lt;Goods&gt; goodsList = new ArrayList&lt;Goods&gt;();
+        Goods goods;
+        while (rs.next()) {
+            System.out.println(&quot;serlvet deplyed!&quot;);
+            int gid = rs.getInt(&quot;gid&quot;);
+            String gname = rs.getString(&quot;gname&quot;);
+            int number = rs.getInt(&quot;number&quot;);
+            String photo = rs.getString(&quot;gphoto&quot;);
+            String type = rs.getString(&quot;type&quot;);
+            String producer = rs.getString(&quot;producer&quot;);
+            float price = rs.getFloat(&quot;price&quot;);
+            float carriage = rs.getFloat(&quot;carriage&quot;);
+            String pdate = rs.getDate(&quot;pdate&quot;).toString();
+            String paddress = rs.getString(&quot;paddress&quot;);
+            String described = rs.getString(&quot;described&quot;);
+            goods = new Goods(gname, number, photo, type, producer, price,
+                    carriage, pdate, paddress, described);
+            goods.setGid(gid);
+            goodsList.add(goods);
+            System.out.println(goods.getGname());
+        }
+        return goodsList;
+    }
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://jiaqiwang98.github.io/tag/_rUuKRgo_" class="tag">
+                    小学期
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jiaqiwang98.github.io/post/javascript-dan-chuang-wen-zi-luan-ma-wen-ti-de-jie-jue-fang-fa">
+                  <h3 class="post-title">
+                    JavaScript弹窗文字乱码问题的解决方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
