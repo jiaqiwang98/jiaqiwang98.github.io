@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1573293642298">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1573737977968">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
@@ -38,7 +38,7 @@ var _hmt = _hmt || [];
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1573293642298" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1573737977968" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -106,7 +106,7 @@ var _hmt = _hmt || [];
             <div class="post-content">
               <p>本篇作为上一篇<a href="https://jiaqiwang98.github.io/post/yi-ti-duo-jie-leetcode-1-liang-shu-zhi-he/">一题多解LeetCode:1.两数之和</a>的续篇，与1题条件唯一不同点在于数组有序，主要讲一下双指针(two pointers)的思想。</p>
 <h3 id="题目">题目：</h3>
-<p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
+<p>给定一个已<strong>按照升序排列</strong> 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
 <p>函数应该返回这两个下标值 <code>index1</code> 和 <code>index2</code>，其中 <code>index1</code> 必须小于 <code>index2</code>。</p>
 <p>说明:</p>
 <p>返回的下标值（<code>index1</code> 和 <code>index2</code>）不是从零开始的。<br>
@@ -148,6 +148,31 @@ public:
 </code></pre>
 <h3 id="双指针two-pointers解法">双指针(two pointers)解法</h3>
 <p>双指针（有时叫快慢指针）法在LeetCode中使用极其普遍，其最明显的特征就是两个指针同时扫描，从而减少一重循环的工作量，将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的时间复杂度降至<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。如果你在一道题中需要使用两次遍历解决问题，那么该题往往就能采用双指针的方法优化至一次遍历。</p>
+<p>在本题中，将两个指针low和high分别放在数组首尾<code>numbers[0] , numbers[numbers.size()-1]</code>,然后求指针指向的两数之和。</p>
+<p>如果和<code>sum &gt; target</code>，为保证下一次和比这次小，则<code>high--</code><br>
+如果和<code>sum &lt; target</code>，为保证下一次和比这次大，则<code>low++</code></p>
+<p>为什么high左移和一定会减小，low右移数字一定会增大？<br>
+因为题目是<strong>排序数组</strong>且为升序，这也是这个题为什么能用双指针。</p>
+<p>下图以<code>2,6,7,9,13,15 target = 16</code>为例<br>
+<img src="https://jiaqiwang98.github.io/post-images/1573737703494.jpg" alt=""></p>
+<p>思想领悟到了，代码也就很好写了～</p>
+<pre><code class="language-c++">class Solution {
+public:
+    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {
+        int slow = 0 , fast = numbers.size() - 1;
+        while(numbers[slow] + numbers[fast] != target){
+            if(numbers[slow] + numbers[fast] &gt; target){
+                fast -- ;
+            }else if(numbers[slow] + numbers[fast] &lt; target){
+                slow ++;
+            }
+        }
+        return {slow + 1,fast + 1};
+        //下标从1开始，而我们是从0开始，所以返回时加1
+    }
+};
+</code></pre>
+<p>双指针思想在LeetCode里有非常多的用处，做完这个题可以做一下<a href="https://leetcode-cn.com/problems/container-with-most-water/">11. 盛最多水的容器</a>虽然标着“中等”，但用双指针非常简单～</p>
 
             </div>
             
