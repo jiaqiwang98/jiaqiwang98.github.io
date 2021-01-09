@@ -2,12 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2020-12-28T11:47:57.919Z</updated>
+    <updated>2021-01-09T13:43:05.870Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
     <subtitle>To be a better one.</subtitle>
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Jiaqi`s Blog</rights>
+    <rights>All rights reserved 2021, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[。]]></title>
+        <id>https://jiaqiwang98.github.io/post/</id>
+        <link href="https://jiaqiwang98.github.io/post/">
+        </link>
+        <updated>2021-01-09T13:41:57.000Z</updated>
+        <content type="html"><![CDATA[<p>能不能给我一点希望啊，哪怕一点点也行</p>
+]]></content>
+    </entry>
 </feed>
