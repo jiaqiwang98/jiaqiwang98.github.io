@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2021-01-09T13:43:05.870Z</updated>
+    <updated>2021-01-12T01:05:18.622Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[希望我和你之间的距离没阻挡]]></title>
+        <id>https://jiaqiwang98.github.io/post/xi-wang-wo-he-ni-zhi-jian-de-ju-chi-mei-zu-dang/</id>
+        <link href="https://jiaqiwang98.github.io/post/xi-wang-wo-he-ni-zhi-jian-de-ju-chi-mei-zu-dang/">
+        </link>
+        <updated>2021-01-12T01:04:19.000Z</updated>
+        <content type="html"><![CDATA[<p>好想找你聊天啊 诶</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[。]]></title>
         <id>https://jiaqiwang98.github.io/post/</id>
