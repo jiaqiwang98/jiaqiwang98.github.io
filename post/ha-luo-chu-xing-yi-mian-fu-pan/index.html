@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613365043012">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613372767030">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
@@ -38,7 +38,7 @@ var _hmt = _hmt || [];
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613365043012" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613372767030" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -139,9 +139,8 @@ var _hmt = _hmt || [];
 <p>虚函数的调用需要虚函数表指针，而该指针存放在对象的内存空间中；若构造函数声明为虚函数，那么由于对象还未创建，还没有内存空间，更没有虚函数表地址用来调用虚函数——构造函数了。</p>
 <p>析构函数常常是虚函数：<br>
 (待补充)</p>
-<pre><code>https://www.cnblogs.com/cs0915/p/12890483.html
-https://zhuanlan.zhihu.com/p/255274039
-</code></pre>
+<p>https://www.cnblogs.com/cs0915/p/12890483.html<br>
+https://zhuanlan.zhihu.com/p/255274039</p>
 <h3 id="swift怎么解决循环引用不会">Swift怎么解决循环引用（不会）</h3>
 <h3 id="讲一下哈希表哈希表解决什么问题和有哪几种哈希冲突的解决方法">讲一下哈希表，哈希表解决什么问题和有哪几种哈希冲突的解决方法</h3>
 <p>1.如何避免哈希冲突：</p>
@@ -153,9 +152,8 @@ https://zhuanlan.zhihu.com/p/255274039
 <p>2.不管插入还是查找，由key获取hash值然后定位到桶的时间复杂度都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>  ，那么真正决定时间复杂度的实际上是桶里面链表/红黑树的情况。如果桶里面没有元素，那么直接将元素插入或者直接返回未查找到，时间复杂度就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> ，如果里面有元素，那么就沿着链表进行遍历，时间复杂度就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，链表越短时间复杂度越低，如果是红黑树的话那就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(lgn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
 <p>3.因此HashMap的查找时间复杂度只有在最理想的情况下才会为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</p>
 <h3 id="讲一下数组和链表的区别讲一下他们内存分配在堆还是栈上">讲一下数组和链表的区别，讲一下他们内存分配在堆还是栈上？</h3>
-<pre><code>https://wenku.baidu.com/view/922e378a6529647d27285223.html
-</code></pre>
-<p>从内存存储来看，<br>
+<p>https://wenku.baidu.com/view/922e378a6529647d27285223.html<br>
+从内存存储来看，<br>
 （静态）数组<strong>从栈中分配空间</strong>，对于程序员方便快捷，但是自由度小，链表<strong>从堆中分配空间</strong>，自由度大但是申请管理比较麻烦。</p>
 <h3 id="算法给定一个二叉树前序顺序和中序顺序-写出后序顺序有手就行">算法：给定一个二叉树前序顺序和中序顺序 写出后序顺序(有手就行)</h3>
 <p>前：8 7 5 20 9 13 14 中：5 7 20 8 13 9 14</p>
@@ -163,6 +161,7 @@ https://zhuanlan.zhihu.com/p/255274039
 <h3 id="反问">反问</h3>
 <p>做什么业务的</p>
 <h3 id="随便问问">随便问问</h3>
+<p>·</p>
 <h1 id="二面">二面</h1>
 <h3 id="实时操作系统和分时操作系统区别虚拟化怎么实现">实时操作系统和分时操作系统区别，虚拟化怎么实现</h3>
 <p>课本上有</p>
@@ -171,8 +170,7 @@ https://zhuanlan.zhihu.com/p/255274039
 <h3 id="osi网络有几层tcpiphttp是哪几层">OSI网络有几层,TCP,IP,HTTP是哪几层</h3>
 <h3 id="tcp和udp的区别">TCP和UDP的区别</h3>
 <h3 id="子网掩码和ip的关系">子网掩码和IP的关系</h3>
-<pre><code>https://blog.51cto.com/zhoutao/93629
-</code></pre>
+<p>https://blog.51cto.com/zhoutao/93629</p>
 <h3 id="自己了解什么前沿技术吗">自己了解什么前沿技术吗</h3>
 <p>答曰Flatter，只知道一点皮毛，面试官也没细问，下回这种自己不懂的还是不讲了</p>
 <h3 id="讲讲你的项目">讲讲你的项目</h3>
@@ -182,9 +180,9 @@ https://zhuanlan.zhihu.com/p/255274039
 <h3 id="反问-2">反问</h3>
 <p>没什么要问的了</p>
 <h1 id="三面hr面">三面(HR面)</h1>
-<h3 id="考研了没期望薪资什么时候可以入职">考研了没，期望薪资，什么时候可以入职</h3>
+<p>略</p>
 <h1 id="总结">总结</h1>
-<p>用一个字总结就是快。2.1上午投的简历，中午就接到了面试邀请。2.3上午一面，下午通知一面过。2.4二面，下午通知二面过，2.5HR面。从投简历到3轮面完共5天。面试官非常准时、人也特别好。我答的也还算可以吧，总之体验不错！</p>
+<p>用一个字总结就是快。2.1上午投的简历，中午就接到了面试邀请。2.3上午一面，下午通知一面过。2.4二面，下午通知二面过，2.5HR面。从投简历到3轮面完共5天。每面的面试官非常准时、人也特别好。我答的也还算可以吧，总之体验不错！</p>
 
             </div>
             
