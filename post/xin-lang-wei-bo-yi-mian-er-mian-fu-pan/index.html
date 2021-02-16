@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613449429160">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613449528013">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
@@ -38,7 +38,7 @@ var _hmt = _hmt || [];
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613449429160" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613449528013" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -104,8 +104,7 @@ var _hmt = _hmt || [];
             <div class="post-date">2021-02-16</div>
             
             <div class="post-content">
-              <p>test</p>
-<h1 id="一面">一面</h1>
+              <h1 id="一面">一面</h1>
 <h3 id="智力题算法">智力题(算法?)</h3>
 <p>有100桶酒，其中1桶酒有毒，小白鼠喝了会死，请问需要几只小白鼠能确定哪桶酒有毒<br>
 第一想到的就是二分</p>
@@ -150,6 +149,21 @@ D d = C c;
 <h3 id="osi七层网卡是什么层交换机是什么层路由器router是什么层">OSI七层，网卡是什么层，交换机是什么层，路由器router是什么层</h3>
 <p>https://blog.csdn.net/xw20084898/article/details/39438783</p>
 <h2 id="操作系统">操作系统</h2>
+<h3 id="内存对齐">内存对齐</h3>
+<pre><code class="language-C++">A a[] = {1,2,3,4,5};
+p = a；
+a++；
+*p = ？ 
+</code></pre>
+<p>*p = 1;</p>
+<pre><code>int main(){
+    int b[2][2] = {{2,2},{3,4}};
+    int (*p)[2] = b;
+    p++;
+    cout&lt;&lt;*(*p)&lt;&lt;endl; //3
+    return 0;
+}
+</code></pre>
 
             </div>
             
