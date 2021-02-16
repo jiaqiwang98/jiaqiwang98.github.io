@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2021-02-16T06:17:14.603Z</updated>
+    <updated>2021-02-16T06:18:42.310Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -93,6 +93,20 @@ a++；
 }
 </code></pre>
 <p>https://zhidao.baidu.com/question/433560504658848084.html</p>
+<h3 id="int-a-5-5存在哪里了a存在哪里了会被存放吗">int a = 5； 5存在哪里了，a存在哪里了，会被存放吗</h3>
+<p>https://www.zhihu.com/question/34266997</p>
+<h2 id="数据库">数据库</h2>
+<h3 id="关系型数据库的三范式数据库没有好好学-忘记了">关系型数据库的三范式(数据库没有好好学 忘记了)</h3>
+<h2 id="算法">算法</h2>
+<h3 id="翻转链表有手就行">翻转链表(有手就行)</h3>
+<h2 id="杂题">杂题</h2>
+<h3 id="讲一下ascii和utf-8的关系">讲一下ASCii和UTF-8的关系</h3>
+<p>从来没遇到过这类问题，当时就回答出了UTF-8是ASCII的扩展<br>
+https://www.cnblogs.com/moumoon/p/10988234.html<br>
+http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html</p>
+<h1 id="总结">总结</h1>
+<p>2.4上午一面，下午通知一面过。2.8上午二面，晚上HR打来电话通知二面过让把简历上的获奖材料发邮箱，年后给发正式的offer。<br>
+微博这两面问到的问题我准备的不是很充分，尤其二面有好几个问题答得不太好。当时面完就觉得要凉，结果晚上接到了offer call真的感觉挺走运的。感谢微博的offer，让我过了一个好年。</p>
 ]]></content>
     </entry>
     <entry>
