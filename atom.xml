@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2021-02-16T06:28:53.701Z</updated>
+    <updated>2021-02-16T06:38:11.998Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -74,6 +74,15 @@ struct{
     long b; 8byte;
     char i; 1byte;
 }
+</code></pre>
+<p>问该结构体共占几个字节</p>
+<h3 id="32位和64位操作系统的硬件差别在哪">32位和64位操作系统的硬件差别在哪</h3>
+<h2 id="c-2">C++</h2>
+<p>C++基础</p>
+<pre><code>A a[] = {1,2,3,4,5};
+p = a；
+a++；
+*p = ？ 
 </code></pre>
 ]]></content>
     </entry>
