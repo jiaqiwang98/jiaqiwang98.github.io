@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613448107457">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1613448204410">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
@@ -38,7 +38,7 @@ var _hmt = _hmt || [];
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613448107457" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1613448204410" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -105,6 +105,96 @@ var _hmt = _hmt || [];
             
             <div class="post-content">
               <p>test</p>
+<h1 id="一面">一面</h1>
+<h3 id="智力题算法">智力题（算法？）</h3>
+<p>有100桶酒，其中1桶酒有毒，小白鼠喝了会死，请问需要几只小白鼠能确定哪桶酒有毒<br>
+第一想到的就是二分</p>
+<h3 id="计算机网络">计算机网络</h3>
+<p>讲一下从点开微博的icon进入到首页点开一张图片，网络数据交互的全过程</p>
+<h3 id="c">C++</h3>
+<h3 id="多继承的内存布局">多继承的内存布局</h3>
+<pre><code class="language-C++">class A{
+    int i;
+};
+class B:public A{
+    int j;
+};
+class C{
+    int k;
+};
+class D:public B,public C{
+
+};
+D d = A a;
+D d = C c;
+</code></pre>
+<p>问D类型强制转换成A类型和C类型 内存发生了什么(当时没太听懂)<br>
+搜了一下题目应该是来自于这个 https://blog.csdn.net/yockie/article/details/50603236 这个问的还是挺深的<br>
+<code>参考</code>https://www.cnblogs.com/noryes/p/6434245.html</p>
+<pre><code>F* pf;
+(C*) pf;
+(E*) pf;
+</code></pre>
+<p>C和E是F的基类，将F的指针pf转化为C<em>或E</em>，只需要将pf加上一个相应的偏移量。转化为C类型指针C<em>时，不需要计算，因为F和C之间的偏移量为 0。转化为E类型指针E</em>时，必须在指针上加一个非0的偏移常量dFE。C ++规范要求NULL指针在强制转化后依然为NULL ，因此在做强制转化需要的运算之前，VC++会检查指针是否为NULL。当然，这个检查只有当指针被显示或者隐式转化为相关类型指针时才进行；当在派生类对象中调用基类的方法，从而派生类指针在后台被转化为一个基类的Const “this” 指针时，这个检查就不需要进行了，因为在此时，该指针一定不为NULL。</p>
+<h3 id="ios基础">iOS基础</h3>
+<p>View里有个Button，Button绑定了事件，问点击Button的响应流程是怎么样的（不会）</p>
+<h3 id="反问">反问</h3>
+<p>做什么业务的，答移动端架构</p>
+<h1 id="二面">二面</h1>
+<h2 id="计算机网络-2">计算机网络</h2>
+<h3 id="说一下http报文结构">说一下HTTP报文结构</h3>
+<h3 id="get能不能带请求体body和post的区别">get能不能带请求体(body)，和post的区别</h3>
+<p>https://www.zhihu.com/question/28586791</p>
+<h3 id="讲一下断点续传的原理">讲一下断点续传的原理</h3>
+<p>https://baijiahao.baidu.com/s?id=1590263619161019562&amp;wfr=spider&amp;for=pc</p>
+<h3 id="osi七层网卡是什么层交换机是什么层路由器router是什么层">OSI七层，网卡是什么层，交换机是什么层，路由器router是什么层</h3>
+<p>https://blog.csdn.net/xw20084898/article/details/39438783</p>
+<h2 id="操作系统">操作系统</h2>
+<h3 id="内存对齐">内存对齐</h3>
+<pre><code>struct{
+    int a；4byte
+    char i；1byte
+    long b；8byte
+};
+
+struct{
+    int a; 4byte;
+    long b; 8byte;
+    char i; 1byte;
+}
+</code></pre>
+<p>问该结构体共占几个字节</p>
+<h3 id="32位和64位操作系统的硬件差别在哪">32位和64位操作系统的硬件差别在哪</h3>
+<h2 id="c-2">C++</h2>
+<pre><code>A a[] = {1,2,3,4,5};
+p = a；
+a++；
+*p = ？ 
+</code></pre>
+<p>*p = 1;</p>
+<pre><code>int main(){
+    int b[2][2] = {{2,2},{3,4}};
+    int (*p)[2] = b;
+    p++;
+    cout&lt;&lt;*(*p)&lt;&lt;endl; //3
+    return 0;
+}
+</code></pre>
+<p>https://zhidao.baidu.com/question/433560504658848084.html</p>
+<h3 id="int-a-5-5存在哪里了a存在哪里了会被存放吗">int a = 5； 5存在哪里了，a存在哪里了，会被存放吗</h3>
+<p>https://www.zhihu.com/question/34266997</p>
+<h2 id="数据库">数据库</h2>
+<h3 id="关系型数据库的三范式数据库没有好好学-忘记了">关系型数据库的三范式(数据库没有好好学 忘记了)</h3>
+<h2 id="算法">算法</h2>
+<h3 id="翻转链表有手就行">翻转链表(有手就行)</h3>
+<h2 id="杂题">杂题</h2>
+<h3 id="讲一下ascii和utf-8的关系">讲一下ASCii和UTF-8的关系</h3>
+<p>从来没遇到过这类问题，当时就回答出了UTF-8是ASCII的扩展<br>
+https://www.cnblogs.com/moumoon/p/10988234.html<br>
+http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html</p>
+<h1 id="总结">总结</h1>
+<p>2.4上午一面，下午通知一面过。2.8上午二面，晚上HR打来电话通知二面过让把简历上的获奖材料发邮箱，年后给发正式的offer。<br>
+微博这两面问到的问题我准备的不是很充分，尤其二面有好几个问题答得不太好。当时面完就觉得要凉，结果晚上接到了offer call真的感觉挺走运的。感谢微博的offer，让我过了一个好年。</p>
 
             </div>
             
