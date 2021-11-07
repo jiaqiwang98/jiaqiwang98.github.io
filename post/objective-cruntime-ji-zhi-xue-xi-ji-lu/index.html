@@ -1,24 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://jiaqiwang98.github.io</id>
-    <title>Jiaqi`s Blog</title>
-    <updated>2021-11-07T11:52:52.945Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://jiaqiwang98.github.io"/>
-    <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
-    <subtitle>To be a better one.</subtitle>
-    <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
-    <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Jiaqi`s Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[Objective-C「Runtime机制」学习记录]]></title>
-        <id>https://jiaqiwang98.github.io/post/objective-cruntime-ji-zhi-xue-xi-ji-lu/</id>
-        <link href="https://jiaqiwang98.github.io/post/objective-cruntime-ji-zhi-xue-xi-ji-lu/">
-        </link>
-        <updated>2021-11-07T08:52:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>阅读这篇文章你将知道OC消息转发的三步处理可以用来做什么</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>阅读这篇文章你将知道OC消息转发的三步处理可以用来做什么</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Objective-C「Runtime机制」学习记录 | Jiaqi`s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1636285966986">
+<link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="阅读这篇文章你将知道OC消息转发的三步处理可以用来做什么
+
+最推荐阅读🌟：
+《iOS 开发：『Runtime』详解（一）基础知识》 https://bujige.net/blog/iOS-Runtime-01.html
+其他推荐阅读：
+《..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://jiaqiwang98.github.io">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1636285966986" class="site-logo">
+        <h1 class="site-title">Jiaqi`s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      To be a better one.
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://jiaqiwang98.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Objective-C「Runtime机制」学习记录</h2>
+            <div class="post-date">2021-11-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>阅读这篇文章你将知道OC消息转发的三步处理可以用来做什么</p>
 <!-- more -->
 <h3 id="最推荐阅读">最推荐阅读🌟：</h3>
 <p>《iOS 开发：『Runtime』详解（一）基础知识》 https://bujige.net/blog/iOS-Runtime-01.html</p>
@@ -117,57 +198,46 @@ NS_ASSUME_NONNULL_BEGIN
 <img src="https://jiaqiwang98.github.io/post-images/1636285817532.png" alt="" loading="lazy"></p>
 <p>注释掉crash防护方法，发生<code>unrecognized selector sent to instance</code>异常，程序崩溃<br>
 <img src="https://jiaqiwang98.github.io/post-images/1636285926681.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[每日学习记录]]></title>
-        <id>https://jiaqiwang98.github.io/post/mei-ri-xue-xi-ji-lu/</id>
-        <link href="https://jiaqiwang98.github.io/post/mei-ri-xue-xi-ji-lu/">
-        </link>
-        <updated>2021-10-31T10:47:15.000Z</updated>
-        <content type="html"><![CDATA[<p>2021-10-28 （没有看完）<br>
-Objective-C Runtime的原理 http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/<br>
-《程序员的自我修养-链接、装载与库》<br>
-2021-10-29<br>
-【复习】Objective-C中的copy（需要手写demo验证下）<br>
-先了解几个概念<br>
-深拷贝与浅拷贝:<br>
-浅拷贝：只复制指向某个对象的指针，而不复制对象本身，新旧对象使用同一块缓存<br>
-深拷贝：创造一个一样的新对象，新对象与原对象内存不共用，修改新对象不会改到原对象<br>
-OC的系统非容器类对象：NSString，NSNumber<br>
-对于不可变对象NSString，进行copy，会得到不可变对象，而且是浅拷贝<br>
-对于不可变对象NSString，进行mutableCopy，会得到可变对象NSMutableString，而且是深拷贝<br>
-对于可变对象NSMutableString，进行copy，会得到不可变对象NSString，而且是深拷贝<br>
-对于可变对象NSMutableString，进行mutableCopy，会得到可变对象，而且是深拷贝<br>
-OC的系统容器类对象：可以按字面意思理解“容器类”指数组NSArray、字典NSDictionary这种容纳多个元素的对象<br>
-自定义对象的拷贝：必须实现NSCopying协议，深拷贝与浅拷贝由copyWithZone方法的实现来控制<br>
-参考：<br>
-https://blog.csdn.net/qq_16844001/article/details/51887118?utm_medium=distribute.pc_relevant.none-task-blog-2<sub>default</sub>baidujs_title~default-1.no_search_link&amp;spm=1001.2101.3001.4242.2<br>
-2021-10-31<br>
-平台业务新人分享课程《深入浅出runtime》<br>
-Objective-C是一门运行时语言<br>
-Runtime可以在运行时创建类、修改类、对象和方法<br>
-2021-11-02<br>
-《iOS多线程：『GCD』详尽总结》<br>
-https://juejin.cn/post/6844903566398717960#heading-17<br>
-文章来自一个大佬的博客：https://bujige.net/ 大佬讲解GCD非常透彻，非常喜欢这类的博客。有技术有生活有温度～</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://jiaqiwang98.github.io/post/about/</id>
-        <link href="https://jiaqiwang98.github.io/post/about/">
-        </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<blockquote>
-<p>欢迎来到我的Blog呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>iOS Client Research &amp; Development @ ByteDance User Growth(UG) Group</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jiaqiwang98.github.io/post/mei-ri-xue-xi-ji-lu/">
+                  <h3 class="post-title">
+                    每日学习记录
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
