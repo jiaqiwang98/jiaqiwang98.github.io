@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiaqiwang98.github.io</id>
     <title>Jiaqi`s Blog</title>
-    <updated>2021-11-07T08:42:28.040Z</updated>
+    <updated>2021-11-07T08:44:55.654Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jiaqiwang98.github.io"/>
     <link rel="self" href="https://jiaqiwang98.github.io/atom.xml"/>
@@ -10,4 +10,66 @@
     <logo>https://jiaqiwang98.github.io/images/avatar.png</logo>
     <icon>https://jiaqiwang98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Jiaqi`s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日学习记录]]></title>
+        <id>https://jiaqiwang98.github.io/post/mei-ri-xue-xi-ji-lu/</id>
+        <link href="https://jiaqiwang98.github.io/post/mei-ri-xue-xi-ji-lu/">
+        </link>
+        <updated>2021-10-31T10:47:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>2021-10-28 （没有看完）<br>
+Objective-C Runtime的原理 http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/<br>
+《程序员的自我修养-链接、装载与库》<br>
+2021-10-29<br>
+【复习】Objective-C中的copy（需要手写demo验证下）<br>
+先了解几个概念<br>
+深拷贝与浅拷贝:<br>
+浅拷贝：只复制指向某个对象的指针，而不复制对象本身，新旧对象使用同一块缓存<br>
+深拷贝：创造一个一样的新对象，新对象与原对象内存不共用，修改新对象不会改到原对象<br>
+OC的系统非容器类对象：NSString，NSNumber<br>
+对于不可变对象NSString，进行copy，会得到不可变对象，而且是浅拷贝<br>
+对于不可变对象NSString，进行mutableCopy，会得到可变对象NSMutableString，而且是深拷贝<br>
+对于可变对象NSMutableString，进行copy，会得到不可变对象NSString，而且是深拷贝<br>
+对于可变对象NSMutableString，进行mutableCopy，会得到可变对象，而且是深拷贝<br>
+OC的系统容器类对象：可以按字面意思理解“容器类”指数组NSArray、字典NSDictionary这种容纳多个元素的对象<br>
+自定义对象的拷贝：必须实现NSCopying协议，深拷贝与浅拷贝由copyWithZone方法的实现来控制<br>
+参考：<br>
+https://blog.csdn.net/qq_16844001/article/details/51887118?utm_medium=distribute.pc_relevant.none-task-blog-2<sub>default</sub>baidujs_title~default-1.no_search_link&amp;spm=1001.2101.3001.4242.2<br>
+2021-10-31<br>
+平台业务新人分享课程《深入浅出runtime》<br>
+Objective-C是一门运行时语言<br>
+Runtime可以在运行时创建类、修改类、对象和方法<br>
+2021-11-02<br>
+《iOS多线程：『GCD』详尽总结》<br>
+https://juejin.cn/post/6844903566398717960#heading-17<br>
+文章来自一个大佬的博客：https://bujige.net/ 大佬讲解GCD非常透彻，非常喜欢这类的博客。有技术有生活有温度～</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>2021-10-28 （没有看完）<br>
+Objective-C Runtime的原理 http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/<br>
+《程序员的自我修养-链接、装载与库》<br>
+2021-10-29<br>
+【复习】Objective-C中的copy（需要手写demo验证下）<br>
+先了解几个概念<br>
+深拷贝与浅拷贝:<br>
+浅拷贝：只复制指向某个对象的指针，而不复制对象本身，新旧对象使用同一块缓存<br>
+深拷贝：创造一个一样的新对象，新对象与原对象内存不共用，修改新对象不会改到原对象<br>
+OC的系统非容器类对象：NSString，NSNumber<br>
+对于不可变对象NSString，进行copy，会得到不可变对象，而且是浅拷贝<br>
+对于不可变对象NSString，进行mutableCopy，会得到可变对象NSMutableString，而且是深拷贝<br>
+对于可变对象NSMutableString，进行copy，会得到不可变对象NSString，而且是深拷贝<br>
+对于可变对象NSMutableString，进行mutableCopy，会得到可变对象，而且是深拷贝<br>
+OC的系统容器类对象：可以按字面意思理解“容器类”指数组NSArray、字典NSDictionary这种容纳多个元素的对象<br>
+自定义对象的拷贝：必须实现NSCopying协议，深拷贝与浅拷贝由copyWithZone方法的实现来控制<br>
+参考：<br>
+https://blog.csdn.net/qq_16844001/article/details/51887118?utm_medium=distribute.pc_relevant.none-task-blog-2<sub>default</sub>baidujs_title~default-1.no_search_link&amp;spm=1001.2101.3001.4242.2<br>
+2021-10-31<br>
+平台业务新人分享课程《深入浅出runtime》<br>
+Objective-C是一门运行时语言<br>
+Runtime可以在运行时创建类、修改类、对象和方法<br>
+2021-11-02<br>
+《iOS多线程：『GCD』详尽总结》<br>
+https://juejin.cn/post/6844903566398717960#heading-17<br>
+文章来自一个大佬的博客：https://bujige.net/ 大佬讲解GCD非常透彻，非常喜欢这类的博客。有技术有生活有温度～</p>
+<!-- more -->
+]]></content>
+    </entry>
 </feed>
