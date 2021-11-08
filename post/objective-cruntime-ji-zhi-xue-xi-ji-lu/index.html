@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1636285966986">
+<link rel="shortcut icon" href="https://jiaqiwang98.github.io/favicon.ico?v=1636353225781">
 <link rel="stylesheet" href="https://jiaqiwang98.github.io/styles/main.css">
 
 
@@ -33,7 +33,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jiaqiwang98.github.io">
-        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1636285966986" class="site-logo">
+        <img src="https://jiaqiwang98.github.io/images/avatar.png?v=1636353225781" class="site-logo">
         <h1 class="site-title">Jiaqi`s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -111,7 +111,7 @@
 <blockquote>
 <p>首先会进行<strong>消息发送</strong>，去dog对象所属类的函数表(methodLists)中去找是否实现了run函数，实现了则执行run函数。如果没有实现run函数，Objective-C的Runtime则会进入<strong>消息转发</strong>流程，进行<strong>消息动态解析</strong>，<strong>消息接受者重定向</strong>，<strong>消息重定向</strong>三步处理，如果这三步处理都失败了，就会抛出我们熟悉的<code>unrecognized selector sent to instance</code>异常。</p>
 </blockquote>
-<p>但是却很少有文章提到我们能用消息转发的这三处理来做什么。通过问组里的大哥和查阅资料了解到，<strong>消息转发的三步流程</strong>在业务上使用极少，主要使用在程序的<strong>crash防护</strong>中，这就解答了我的困惑。下面用一个demo来展示下是如何利用消息转发机制对<code>unrecognized selector sent to instance</code>这种crash进行防护的。</p>
+<p>但是却很少有文章提到我们能用消息转发的这三处理来做什么。通过问组里的大哥和查阅资料了解到，<strong>消息转发的三步流程</strong>在业务上使用较少，主要使用在程序的<strong>crash防护</strong>中，这就解答了我的困惑。下面用一个demo来展示下是如何利用消息转发机制对<code>unrecognized selector sent to instance</code>这种crash进行防护的。</p>
 <p>当<code>[dog run]</code>中run函数没有实现时，消息转发给我们提供了三步处理来挽回。<br>
 1.在<strong>消息动态解析</strong>中调用<code>+resolveInstanceMethod:</code>为该类动态添加函数的实现<br>
 2.在<strong>消息接受者重定向</strong>中调用<code>-forwardingTargetForSelector:</code>将消息转发给别的对象（仅限一个），看看ta有没有实现run函数<br>
